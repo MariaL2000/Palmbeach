@@ -1,0 +1,32 @@
+generator client {
+    provider = "prisma-client-js"
+    output   = "../app/generated/prisma"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+enum Role {
+    USER
+    ADMIN
+}
+
+model User {
+    id        String   @id @default(cuid())
+    name      String?
+    email     String   @unique
+    password  String
+    role      Role     @default(USER)
+    createdAt DateTime @default(now())
+}
+
+model ProjectImage {
+    id        String   @id @default(cuid())
+    url       String // Cloudinary URL
+    publicId  String // Para borrar de Cloudinary
+    category  String // Epoxy, Concrete, Marble, Wood
+    title     String?
+    active    Boolean  @default(true)
+    createdAt DateTime @default(now())
+}

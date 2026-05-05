@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* app/globals.css */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 60 30% 98%;
+    /* Beige muy claro / Mármol */
+    --foreground: 20 10% 10%;
+    --primary: 350 40% 32%;
+    /* Rojo Vino / Marol */
+    --secondary: 40 20% 90%;
+    /* Beige Arena */
+    --accent: 30 10% 40%;
+    /* Dorado envejecido / Gris piedra */
+    --glass: rgba(245, 245, 240, 0.7);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.glass-nav {
+  @apply bg-(--glass) backdrop-blur-md border-b border-white/20 shadow-sm;
+}
+
+
+
+.font-natural {
+  font-family: 'Lora', serif;
+}
+
+.font-clean {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Efecto de cristal dorado sin bordes negros */
+.glass-gold {
+  background-color: rgba(184, 134, 11, 0.15);
+  /* Dorado oscuro semi-transparente */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out forwards;
 }
