@@ -1,55 +1,54 @@
 "use client";
 import { MATERIALS } from "@/data/site";
 import SectionHeader from "../ui/SectionHeader";
-import { motion } from "framer-motion";
 
-export default function Materials() {
+const Materials = () => {
   return (
-    <section id="materials" className="py-24 md:py-32 bg-white">
-      <div className="container mx-auto px-6">
+    <section id="materials" className="bg-background py-20 md:py-28">
+      <div className="container px-6 md:px-12 lg:px-20">
         <SectionHeader
+          eyebrow="The Craft"
+          title="Premium materials, only."
+          subtitle="Pro-grade ingredients chosen to survive humidity, salt and the Florida sun."
           center={false}
-          eyebrow="The Standard"
-          title="Premium Materials"
-          subtitle="We source only the finest resins and aggregates for a finish that looks like marble and lasts like stone."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {MATERIALS.map((m, i) => (
-            <motion.div
+            <article
               key={m.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="flex flex-col gap-6"
+              className="group relative overflow-hidden bg-card border border-border/50 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1 transition-all duration-500"
             >
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-inner group">
+              <div className="aspect-[5/3] overflow-hidden">
                 <img
-                  src={m.img}
+                  src={m.img} // aquí ya es string, no uses .src
                   alt={m.name}
-                  className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700"
+                  loading="lazy"
+                  className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 border-[0.5px] border-black/5 rounded-2xl" />
               </div>
-              <div>
-                <div className="flex items-center gap-4 mb-2">
-                  <span className="h-px w-8 bg-primary/30" />
-                  <span className="text-primary font-bold text-xs uppercase tracking-tighter">
-                    Grade A+
-                  </span>
-                </div>
-                <h3 className="text-2xl font-serif text-foreground italic">
+
+              {/* Texto */}
+              <div className="p-6">
+                <p className="text-[11px] tracking-[0.3em] uppercase text-[var(--buttons)]/80">
+                  0{i + 1}
+                </p>
+                <h3
+                  className="mt-1 text-xl md:text-2xl font-serif"
+                  style={{ color: "var(--primary)" }}
+                >
                   {m.name}
                 </h3>
-                <p className="mt-3 text-muted-foreground text-sm font-light leading-relaxed">
+                <p className="mt-3 text-sm md:text-base text-muted-foreground leading-relaxed">
                   {m.desc}
                 </p>
               </div>
-            </motion.div>
+            </article>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Materials;

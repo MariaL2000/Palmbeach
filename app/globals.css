@@ -4,17 +4,21 @@
 @layer base {
   :root {
     --background: 60 30% 98%;
-    /* Beige muy claro / Mármol */
     --foreground: 20 10% 10%;
-    --primary: 350 40% 32%;
-    /* Rojo Vino / Marol */
-    --secondary: 40 20% 90%;
+
+    --primary: rgba(12 42 70);
+    --secondary: rgba(1, 24, 38);
+    --buttons: rgb(185, 146, 74);
+
     /* Beige Arena */
-    --accent: 30 10% 40%;
+    --accent: rgba (166 122 83);
+    --maron: rgba(64 31 20);
+
     /* Dorado envejecido / Gris piedra */
     --glass: rgba(245, 245, 240, 0.7);
   }
 }
+
 
 .glass-nav {
   @apply bg-(--glass) backdrop-blur-md border-b border-white/20 shadow-sm;

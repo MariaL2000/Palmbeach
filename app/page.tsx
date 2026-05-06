@@ -4,6 +4,10 @@ import GalleryMarquee from "@/components/sections/GalleryMarquee";
 import Materials from "@/components/sections/Materials";
 import { prisma } from "@/lib/prisma";
 import Navbar from "@/components/navbar/Navbar";
+import WhyUs from "@/components/sections/Whyus";
+import Reviews from "@/components/sections/Reviews";
+import Footer from "@/components/sections/Footer";
+import Faq from "@/components/sections/Faq";
 
 export default async function HomePage() {
   return (
@@ -11,9 +15,13 @@ export default async function HomePage() {
       <Navbar />
       <HeroCarousel />
       <Services />
+      <WhyUs />
       <GalleryMarquee />
+
       <Materials />
-      {/* Tu Footer aquí */}
+      <Reviews />
+      <Faq />
+      <Footer />
     </main>
   );
 }
