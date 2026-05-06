@@ -40,7 +40,7 @@ export default function AdminPanel() {
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-end mb-10">
           <div>
-            <h1 className="text-4xl font-serif text-[var(--primary)]">
+            <h1 className="text-4xl font-serif text-(--primary)">
               Gallery Manager
             </h1>
             <p className="text-gray-400 text-sm mt-2">
@@ -66,7 +66,7 @@ export default function AdminPanel() {
             {({ open }) => (
               <button
                 onClick={() => open()}
-                className="bg-[var(--buttons)] text-[var(--primary)] px-8 py-3 font-bold uppercase text-xs tracking-widest hover:brightness-110 transition-all"
+                className="bg-(--buttons) text-(--primary) px-8 py-3 font-bold uppercase text-xs tracking-widest hover:brightness-110 transition-all"
               >
                 Upload Photo
               </button>
