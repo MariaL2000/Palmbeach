@@ -1,18 +1,27 @@
 import type { NextAuthConfig } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
 
 export const authConfig: NextAuthConfig = {
   pages: {
-    signIn: "/login",
+    signIn: "/admin/login", // Ruta personalizada de login
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isAdminPage = nextUrl.pathname.startsWith("/admin");
+      const isLoginPage = nextUrl.pathname === "/admin/login";
+
+      // Si el usuario intenta ir al login estando ya logueado, mandarlo al panel
+      if (isLoginPage) {
+        if (isLoggedIn) return Response.redirect(new URL("/admin", nextUrl));
+        return true;
+      }
+
+      // Proteger rutas de admin
       if (isAdminPage) {
         if (isLoggedIn && (auth.user as any).role === "ADMIN") return true;
-        return false;
+        return false; // Redirige automáticamente a /admin/login
       }
+
       return true;
     },
     async jwt({ token, user }) {
@@ -24,17 +33,5 @@ export const authConfig: NextAuthConfig = {
       return session;
     },
   },
-  providers: [
-    Credentials({
-      async authorize(credentials) {
-        // Aquí usarás bcrypt para comparar contraseñas
-        return {
-          id: "1",
-          name: "Admin",
-          email: "admin@luxuryfloors.com",
-          role: "ADMIN",
-        };
-      },
-    }),
-  ],
+  providers: [], // Se añaden en auth.ts para evitar problemas con Prisma en el Edge
 };

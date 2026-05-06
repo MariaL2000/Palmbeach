@@ -55,11 +55,11 @@ export default function EliteLuxuryFloors() {
             alt="Medra ProWorks Logo"
             width={220}
             height={220}
-            className="w-48 md:w-56 h-auto object-contain mx-auto drop-shadow-lg"
+            className="w-50 md:w-58 h-auto object-contain mx-auto drop-shadow-lg"
             priority
           />
 
-          <h1 className="text-white text-xl md:text-2xl font-semibold tracking-[0.1em] uppercase leading-tight drop-shadow-lg mt-4">
+          <h1 className="text-white text-xl md:text-4xl font-semibold tracking-[0.1em] uppercase leading-tight drop-shadow-lg mt-4">
             Medra <br />
             <span className="italic text-[var(--buttons)]">ProWorks</span>
           </h1>
@@ -71,11 +71,6 @@ export default function EliteLuxuryFloors() {
               Palm Beach, Fl
             </div>
           </div>
-
-          <p className="text-white/80 text-xs sm:text-sm font-light max-w-md mx-auto tracking-widest drop-shadow-sm mt-4">
-            Superior resinous surfaces and architectural concrete for South
-            Florida's elite estates.
-          </p>
         </div>
 
         {/* Flechas */}

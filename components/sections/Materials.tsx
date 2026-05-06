@@ -1,54 +1,84 @@
 "use client";
 import { MATERIALS } from "@/data/site";
 import SectionHeader from "../ui/SectionHeader";
+import ActionButton from "../ui/ActionButton";
+import { lora } from "@/app/fonts/fonts";
 
-const Materials = () => {
+export default function MaterialsMarquee() {
+  // Duplicamos los items para que el scroll infinito sea fluido
+  const items = [...MATERIALS, ...MATERIALS];
+
   return (
-    <section id="materials" className="bg-background py-20 md:py-28">
-      <div className="container px-6 md:px-12 lg:px-20">
+    <section
+      id="materials-marquee"
+      className="py-16 md:py-24 bg-gray-50 overflow-hidden"
+    >
+      <div className="container mx-auto px-6 mb-12">
         <SectionHeader
           eyebrow="The Craft"
-          title="Premium materials, only."
-          subtitle="Pro-grade ingredients chosen to survive humidity, salt and the Florida sun."
-          center={false}
+          title="Premium Materials Only"
+          subtitle="Pro-grade ingredients chosen to survive humidity, salt, and the intense Florida sun."
+          center
         />
+      </div>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {MATERIALS.map((m, i) => (
-            <article
-              key={m.name}
-              className="group relative overflow-hidden bg-card border border-border/50 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1 transition-all duration-500"
+      {/* Contenedor del Marquee */}
+      <div className="relative flex overflow-x-hidden mb-12">
+        <div className="flex animate-marquee whitespace-nowrap gap-6 py-4">
+          {items.map((m, i) => (
+            <div
+              key={`${m.name}-${i}`}
+              className="group relative h-[250px] md:h-[320px] w-[300px] md:w-[400px] shrink-0 overflow-hidden shadow-xl transition-all duration-500"
             >
-              <div className="aspect-[5/3] overflow-hidden">
-                <img
-                  src={m.img} // aquí ya es string, no uses .src
-                  alt={m.name}
-                  loading="lazy"
-                  className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-
-              {/* Texto */}
-              <div className="p-6">
-                <p className="text-[11px] tracking-[0.3em] uppercase text-[var(--buttons)]/80">
-                  0{i + 1}
-                </p>
-                <h3
-                  className="mt-1 text-xl md:text-2xl font-serif"
-                  style={{ color: "var(--primary)" }}
+              <img
+                src={m.img}
+                alt={m.name}
+                className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              {/* Overlay con nombre del material */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+                <span className="text-[var(--buttons)] text-[10px] tracking-[0.3em] uppercase font-bold mb-1">
+                  Grade A+
+                </span>
+                <h4
+                  className={`${lora.className} text-white text-xl md:text-2xl`}
                 >
                   {m.name}
-                </h3>
-                <p className="mt-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  {m.desc}
-                </p>
+                </h4>
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </div>
+
+      {/* Botón de acción centrado */}
+      <div className="flex justify-center mt-4">
+        <ActionButton
+          href="/materials"
+          label="Explore materials"
+          variant="primary"
+        />
+      </div>
+
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-marquee {
+          display: flex;
+          width: fit-content;
+          animation: marquee 35s linear infinite;
+        }
+        /* Pausar al pasar el mouse para que el usuario pueda ver los materiales */
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   );
-};
-
-export default Materials;
+}

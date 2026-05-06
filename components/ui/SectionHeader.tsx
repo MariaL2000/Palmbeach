@@ -1,12 +1,13 @@
 "use client";
 import { libreBaskerville } from "@/app/fonts/fonts";
-import ScrollReveal from "../ui/ScrollReveal";
+import { motion } from "framer-motion";
 
 interface Props {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   center?: boolean;
+  titleColor?: string; // Prop para personalizar el color
 }
 
 export default function SectionHeader({
@@ -14,45 +15,52 @@ export default function SectionHeader({
   title,
   subtitle,
   center = true,
+  titleColor = "var(--primary)", // Color por defecto
 }: Props) {
   return (
     <div
-      className={`${center ? "text-center max-w-3xl mx-auto" : "max-w-2xl"} mb-10`}
+      className={`${center ? "text-center max-w-4xl mx-auto" : "max-w-2xl"} mb-12 md:mb-16`}
     >
       {eyebrow && (
-        <ScrollReveal direction="up" delay={0.1}>
-          <p
-            className={`${libreBaskerville.className} text-[10px] md:text-xs tracking-[0.4em] uppercase text-primary font-bold mb-4`}
-          >
-            {eyebrow}
-          </p>
-        </ScrollReveal>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }} // Se activa siempre al scrollear
+          className={`${libreBaskerville.className} text-[10px] md:text-xs tracking-[0.4em] uppercase font-black mb-4`}
+          style={{ color: "var(--buttons)" }}
+        >
+          {eyebrow}
+        </motion.p>
       )}
 
-      <ScrollReveal direction="up" delay={0.2}>
-        <h2
-          className={`${libreBaskerville.className} text-2xl sm:text-3xl md:text-4xl leading-tight`}
-          style={{ color: "var(--primary)" }}
-        >
-          {title}
-        </h2>
-      </ScrollReveal>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        className={`${libreBaskerville.className} text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.2] font-bold`}
+        style={{ color: titleColor }}
+      >
+        {title}
+      </motion.h2>
 
       {subtitle && (
-        <ScrollReveal direction="up" delay={0.3}>
-          <p
-            className={`${libreBaskerville.className} mt-4 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed`}
-          >
-            {subtitle}
-          </p>
-        </ScrollReveal>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          className="mt-6 text-base md:text-xl text-gray-600 leading-relaxed italic"
+        >
+          {subtitle}
+        </motion.p>
       )}
 
-      <ScrollReveal direction="up" delay={0.4}>
-        <div
-          className={`mt-6 h-1 w-20 bg-primary/20 ${center ? "mx-auto" : ""}`}
-        />
-      </ScrollReveal>
+      <div
+        className={`mt-8 h-1 w-20 transition-all duration-700`}
+        style={{
+          backgroundColor: "var(--buttons)",
+          margin: center ? "0 auto" : "0",
+        }}
+      />
     </div>
   );
 }

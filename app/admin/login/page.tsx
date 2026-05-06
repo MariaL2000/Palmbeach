@@ -1,67 +1,59 @@
 "use client";
-import { useState } from "react";
-import Link from "next/link";
+import { useActionState } from "react";
+import { authenticate } from "@/actions/auth-actions";
+import { lora, libreBaskerville } from "@/app/fonts/fonts";
 
 export default function AdminLogin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aquí iría tu lógica de autenticación
-    console.log("Login attempt:", { email, password });
-  };
+  const [errorMessage, formAction, isPending] = useActionState(
+    authenticate,
+    undefined,
+  );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-secondary/20">
-      <div className="bg-white rounded-3xl shadow-xl p-10 w-full max-w-md border border-primary/10">
-        <h1 className="text-3xl font-serif italic text-primary mb-6">
-          Admin Login
-        </h1>
-        <p className="text-sm text-gray-500 mb-8">
-          Solo administradores autorizados pueden acceder.
-        </p>
+    <div
+      className={`min-h-screen flex items-center justify-center bg-gray-50 ${lora.className}`}
+    >
+      <div className="bg-white p-10 rounded-3xl shadow-xl w-full max-w-md border border-gray-100">
+        <div className="text-center mb-8">
+          <h1
+            className={`${libreBaskerville.className} text-3xl font-bold text-[#0A192F]`}
+          >
+            Admin Access
+          </h1>
+          <p className="text-xs uppercase tracking-widest text-[var(--buttons)] font-black mt-2">
+            Medra ProWorks
+          </p>
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-              required
-            />
-          </div>
+        <form action={formAction} className="space-y-6">
+          <input
+            name="email"
+            type="email"
+            placeholder="Email Address"
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[var(--buttons)] outline-none text-black transition-all"
+            required
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[var(--buttons)] outline-none text-black transition-all"
+            required
+          />
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-              required
-            />
-          </div>
+          {errorMessage && (
+            <p className="text-red-500 text-xs font-bold bg-red-50 p-3 rounded-lg border border-red-100 italic">
+              {errorMessage}
+            </p>
+          )}
 
           <button
-            type="submit"
-            className="w-full bg-[var(--buttons)] text-[#0A192F] py-3 rounded-lg font-bold hover:scale-105 transition-transform shadow-lg"
+            disabled={isPending}
+            className="w-full bg-[#0A192F] text-white py-4 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-[var(--buttons)] hover:text-[#0A192F] transition-all disabled:opacity-50"
           >
-            Entrar
+            {isPending ? "Verifying..." : "Login to Panel"}
           </button>
         </form>
-
-        <div className="mt-6 text-center">
-          <Link href="/" className="text-sm text-primary hover:underline">
-            ← Volver al sitio
-          </Link>
-        </div>
       </div>
     </div>
   );

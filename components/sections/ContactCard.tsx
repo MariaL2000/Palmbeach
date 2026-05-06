@@ -3,100 +3,137 @@ import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { sendContact } from "@/actions/contact";
+import { libreBaskerville } from "@/app/fonts/fonts";
+import { Send, User, Mail, Phone, MessageSquare } from "lucide-react";
 
 const schema = z.object({
-  name: z.string().trim().min(2, "Name is required").max(80),
-  email: z.string().trim().email("Invalid email").max(160),
-  phone: z.string().trim().min(7, "Phone is required").max(30),
-  message: z.string().trim().min(5, "Tell us a bit more").max(600),
+  name: z.string().trim().min(2, "Full name required"),
+  email: z.string().trim().email("Valid email required"),
+  phone: z.string().trim().min(7, "Phone required"),
+  message: z.string().trim().min(5, "Message too short"),
 });
 
-type FormState = z.infer<typeof schema>;
-
 export default function ContactCard() {
-  const [form, setForm] = useState<FormState>({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const parsed = schema.safeParse(form);
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0].message);
-      return;
-    }
     setLoading(true);
 
-    const res = await sendContact(form);
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData);
+
+    const parsed = schema.safeParse(data);
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0].message);
+      setLoading(false);
+      return;
+    }
+
+    const res = await sendContact(data);
 
     if (res.ok) {
-      toast.success("Thanks! We'll be in touch within 24 hours.");
-      setForm({ name: "", email: "", phone: "", message: "" });
+      toast.success("Inquiry received. We'll contact you shortly.");
+      (e.target as HTMLFormElement).reset();
     } else {
       toast.error("Something went wrong. Please try again.");
     }
-
     setLoading(false);
   };
 
-  const field =
-    "w-full rounded-lg border border-border bg-background/60 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--buttons)]/40 transition";
+  const inputContainer = "relative group w-full";
+  const iconStyle =
+    "absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[var(--buttons)] transition-colors duration-300";
+  const inputClass =
+    "w-full bg-gray-50 border-b-2 border-gray-200 pl-12 pr-4 py-4 text-sm focus:border-[var(--buttons)] focus:bg-white outline-none transition-all duration-300 placeholder:text-gray-400 text-[var(--primary)]";
 
   return (
-    <section id="contact" className="py-24 px-6 max-w-4xl mx-auto">
-      <div className="mx-auto max-w-3xl rounded-2xl bg-white p-6 md:p-10 shadow-[var(--shadow-elegant)] border border-border/60">
-        <h2 className="text-3xl md:text-4xl text-[var(--primary)]">
-          Request a Free Quote
-        </h2>
-        <p className="mt-2 text-gray-500 text-sm">
-          Tell us about your project — we'll respond within 24 hours.
-        </p>
-        <form
-          onSubmit={onSubmit}
-          className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4"
+    <div
+      className="bg-white shadow-2xl border-t-[6px] border-[var(--buttons)] relative overflow-hidden"
+      id="contact"
+    >
+      {/* Decoración de fondo sutil */}
+      <div className="absolute -right-10 -top-10 w-32 h-32 bg-[var(--buttons)] opacity-5 rounded-full" />
+
+      <div className="p-8 md:p-10">
+        <h3
+          className={`${libreBaskerville.className} text-2xl md:text-3xl text-[var(--primary)] mb-2 flex items-center gap-3`}
         >
-          <input
-            className={field}
-            placeholder="Full name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            maxLength={80}
-          />
-          <input
-            className={field}
-            placeholder="Email"
-            type="email"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            maxLength={160}
-          />
-          <input
-            className={field + " md:col-span-2"}
-            placeholder="Phone"
-            value={form.phone}
-            onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            maxLength={30}
-          />
-          <textarea
-            className={field + " md:col-span-2 min-h-32 resize-y"}
-            placeholder="Brief description of your project"
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            maxLength={600}
-          />
+          Request a Quote
+        </h3>
+        <p className="text-gray-500 text-sm mb-10 font-medium">
+          Leave your details and a specialist will contact you{" "}
+          <span className="text-[var(--buttons)] font-bold underline">
+            within 24 hours
+          </span>
+          .
+        </p>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className={inputContainer}>
+              <User size={18} className={iconStyle} />
+              <input
+                name="name"
+                placeholder="Full Name"
+                className={inputClass}
+                required
+              />
+            </div>
+            <div className={inputContainer}>
+              <Mail size={18} className={iconStyle} />
+              <input
+                name="email"
+                type="email"
+                placeholder="Email Address"
+                className={inputClass}
+                required
+              />
+            </div>
+          </div>
+
+          <div className={inputContainer}>
+            <Phone size={18} className={iconStyle} />
+            <input
+              name="phone"
+              placeholder="Phone Number"
+              className={inputClass}
+              required
+            />
+          </div>
+
+          <div className={inputContainer}>
+            <MessageSquare
+              size={18}
+              className="absolute left-4 top-5 text-gray-400 group-focus-within:text-[var(--buttons)] transition-colors duration-300"
+            />
+            <textarea
+              name="message"
+              placeholder="Tell us about your project (Sq. Ft, desired materials...)"
+              className={`${inputClass} min-h-[140px] resize-none pt-4`}
+              required
+            />
+          </div>
+
           <button
             type="submit"
             disabled={loading}
-            className="md:col-span-2 inline-flex justify-center items-center px-6 py-3 rounded-full bg-[var(--buttons)] text-white text-sm font-medium hover:opacity-90 transition disabled:opacity-60"
+            className="w-full bg-[var(--primary)] hover:bg-[var(--buttons)] text-white font-black uppercase tracking-[0.25em] py-6 text-sm transition-all duration-500 flex justify-center items-center gap-3 group shadow-xl active:scale-95 disabled:opacity-50"
           >
-            {loading ? "Sending..." : "Send Inquiry"}
+            {loading ? (
+              "Processing..."
+            ) : (
+              <>
+                <Send
+                  size={18}
+                  className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                />
+                Send Inquiry
+              </>
+            )}
           </button>
         </form>
       </div>
-    </section>
+    </div>
   );
 }

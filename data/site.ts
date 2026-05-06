@@ -126,3 +126,48 @@ export const FAQS = [
     a: "Yes — from Jupiter to Boca Raton, including West Palm Beach and the islands.",
   },
 ];
+
+export const SERVICES_DETAILS = {
+  "tile-installation": {
+    title: "Precision Tile Installation",
+    subtitle: "Durability meets artistic design for your surfaces.",
+    image:
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070",
+    description:
+      "Our tile installation service focuses on perfection. Whether it's porcelain, ceramic, or natural stone, we ensure every piece is perfectly leveled and aligned to create a seamless, high-end finish.",
+    benefits: [
+      "Waterproof solutions for bathrooms",
+      "High-traffic durability",
+      "Easy maintenance",
+      "Custom mosaic patterns",
+    ],
+  },
+  "wood-flooring": {
+    title: "Premium Wood Flooring",
+    subtitle: "Timeless elegance and natural warmth for your home.",
+    image:
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2070",
+    description:
+      "From engineered hardwood to luxury vinyl plank (LVP), we provide flooring that enhances the value of your property. We specialize in subfloor preparation to guarantee a squeak-free, long-lasting result.",
+    benefits: [
+      "Enhanced property value",
+      "Eco-friendly material options",
+      "Professional sanding & finishing",
+      "Moisture-resistant LVP",
+    ],
+  },
+  remodeling: {
+    title: "Full-Scale Remodeling",
+    subtitle: "Transforming spaces from floor to ceiling.",
+    image:
+      "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?q=80&w=2070",
+    description:
+      "Ready for a complete change? Our remodeling services cover everything from kitchen updates to full living room transformations, integrating new flooring with modern architectural elements.",
+    benefits: [
+      "Complete structural updates",
+      "Integrated lighting & flooring",
+      "Modern aesthetic design",
+      "Turnkey project management",
+    ],
+  },
+};
