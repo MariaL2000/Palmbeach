@@ -1,1 +1,1 @@
-$env:DATABASE_URL="postgresql://postgres.ltmopcewiuuvjrkehugm:ShopIt2026Teslo@aws-1-us-west-2.pooler.supabase.com:5432/postgres"; npx prisma db push
+$env:NODE_TLS_REJECT_UNAUTHORIZED="0"; $env:DATABASE_URL="postgresql://postgres.irvlhmwiakteqebcapvs:PalmCoast%26O8@aws-1-us-west-2.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1&sslmode=no-verify&statement_cache_size=0"; npx prisma db push
