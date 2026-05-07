@@ -1,17 +1,11 @@
 "use client";
-import { motion, Variants } from "framer-motion"; // Importamos Variants
+import { motion, Variants } from "framer-motion";
 import SectionHeader from "../ui/SectionHeader";
 import ActionButton from "../ui/ActionButton";
-import { lora } from "@/app/fonts/fonts";
+import { lora, libreBaskerville } from "@/app/fonts/fonts";
+import Image from "next/image"; // Importamos Image para optimizar las locales
+import { puzzleImages } from "@/data/site";
 
-const puzzleImages = [
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800",
-  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800",
-  "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=800",
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800",
-];
-
-// Tipado explícito para evitar el error de TS
 const slideFromRight: Variants = {
   hidden: { opacity: 0, x: 150 },
   visible: (i: number) => ({
@@ -21,7 +15,7 @@ const slideFromRight: Variants = {
       type: "spring",
       stiffness: 50,
       damping: 20,
-      delay: i * 0.15, // Usamos custom props para el stagger
+      delay: i * 0.15,
     },
   }),
 };
@@ -41,18 +35,33 @@ export default function AboutUs() {
               className={`${lora.className} space-y-6 text-gray-700 text-lg leading-relaxed`}
             >
               <p>
-                Our passion for home transformation isn't just about aesthetics;
-                it's a commitment to structural artistry. For over two years,
-                MariaL2000 has led a vision where Full-Stack precision meets
-                interior design. We believe that a floor is the soul of a room,
-                and a remodel is a rebirth of your personal sanctuary.
+                Established two years ago in the heart of South Florida, our
+                journey began with a clear mission: to redefine the standards of
+                architectural surfaces. We have dedicated every project to
+                mastering the balance between industrial-grade durability and
+                high-end aesthetic design.
               </p>
+
+              <div className="py-4">
+                <h4
+                  className={`${libreBaskerville.className} text-[var(--primary)] font-bold text-xl mb-2`}
+                >
+                  Our Commitment
+                </h4>
+                <p className="italic border-l-4 border-[var(--buttons)] pl-4 text-gray-600">
+                  &quot;To deliver uncompromising quality through precision
+                  engineering and artisanal dedication in every square foot we
+                  coat.&quot;
+                </p>
+              </div>
+
               <p>
-                From the initial concept in our 3D Blender workshops to the
-                final hand-polished finish, our team treats every grain of wood
-                and every tile as a piece of a larger puzzle. We don't just
-                build houses; we craft the backdrop for your life's most
-                precious moments with professional-grade engineering.
+                Our objective is simple yet ambitious: to provide Florida
+                homeowners and businesses with flooring systems that outlast the
+                elements. From advanced polyaspartics to bespoke metallic art,
+                we treat your space as our own canvas, ensuring a seamless
+                experience from the first consultation to the final
+                hand-polished finish.
               </p>
             </motion.div>
 
@@ -80,7 +89,7 @@ export default function AboutUs() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.2 }}
-                  className={`rounded-2xl overflow-hidden shadow-2xl ${
+                  className={`rounded-2xl overflow-hidden shadow-2xl relative ${
                     index === 0
                       ? "col-span-8 row-span-7"
                       : index === 1
@@ -90,10 +99,12 @@ export default function AboutUs() {
                           : "col-span-7 row-span-4"
                   }`}
                 >
-                  <img
+                  <Image
                     src={src}
-                    className="w-full h-full object-cover"
-                    alt="Elite Remodeling"
+                    alt="Elite Flooring Project"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 33vw"
                   />
                 </motion.div>
               ))}

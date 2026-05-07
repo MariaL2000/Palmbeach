@@ -5,31 +5,32 @@ export interface Material {
 }
 
 export const COMPANY = {
-  name: "Prestige Flooring of North America",
+  name: "Medra ProWorks",
   short: "Prestige Flooring",
-  location: "Palm Beach, FL",
+  location: "Palm Coast, FL",
   phone: "(561) 285-7825",
   phoneHref: "tel:5612857825",
-  email: "info@prestigeflooringfl.com",
+  email: "medraproworks@gmail.com",
 };
+
 export const SERVICES = [
   {
-    title: "Tile Supply & Installation",
-    slug: "tile-installation",
-    img: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=100",
-    desc: "Premium tile supply and professional installation for residential and commercial spaces.",
+    title: "Metallic Art Epoxy",
+    slug: "metallic-epoxy",
+    desc: "The pinnacle of interior luxury. We create bespoke, seamless floors that mimic the movement of liquid marble, designed specifically for high-end Miami residences.",
+    img: "/portfolio/a1.jpg",
   },
   {
-    title: "Wood & Wood-Like Flooring",
-    slug: "wood-flooring",
-    img: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=100",
-    desc: "Curated selection of solid hardwood, engineered wood, and wood-like flooring.",
+    title: "Commercial Quartz",
+    slug: "commercial-quartz",
+    desc: "Unbeatable durability meets aesthetic precision. A high-performance system engineered for heavy traffic, offering superior slip resistance and a sophisticated finish.",
+    img: "/portfolio/a2.jpg",
   },
   {
-    title: "Kitchen & Bathroom Remodeling",
-    slug: "remodeling",
-    img: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=100",
-    desc: "Elegant and personalized kitchen and bathroom transformations.",
+    title: "Industrial Polyaspartic",
+    slug: "polyaspartic-systems",
+    desc: "Rapid-cure technology for fast-paced environments. Our coatings offer 4x the strength of standard epoxy, with complete UV stability and 24-hour return-to-service.",
+    img: "/portfolio/a3.jpg",
   },
 ];
 
@@ -126,48 +127,127 @@ export const FAQS = [
     a: "Yes — from Jupiter to Boca Raton, including West Palm Beach and the islands.",
   },
 ];
+// data/site.ts
 
 export const SERVICES_DETAILS = {
-  "tile-installation": {
-    title: "Precision Tile Installation",
-    subtitle: "Durability meets artistic design for your surfaces.",
-    image:
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070",
+  "metallic-epoxy": {
+    title: "Metallic Art Epoxy",
+    subtitle: "Liquid Marble Aesthetics",
     description:
-      "Our tile installation service focuses on perfection. Whether it's porcelain, ceramic, or natural stone, we ensure every piece is perfectly leveled and aligned to create a seamless, high-end finish.",
+      "Our Metallic Art Epoxy systems represent the pinnacle of decorative flooring. Designed for high-end Miami residences, this system uses metallic pigments to create a 3D effect that mimics natural stone, marble, or even deep-sea currents. It is completely seamless, antimicrobial, and finished with a high-performance topcoat for lasting brilliance.",
+    image: "/portfolio/a1.jpg",
     benefits: [
-      "Waterproof solutions for bathrooms",
-      "High-traffic durability",
-      "Easy maintenance",
-      "Custom mosaic patterns",
+      "Bespoke Designs",
+      "Seamless Finish",
+      "Antimicrobial",
+      "High Gloss Reflectivity",
     ],
   },
-  "wood-flooring": {
-    title: "Premium Wood Flooring",
-    subtitle: "Timeless elegance and natural warmth for your home.",
-    image:
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2070",
+  "commercial-quartz": {
+    title: "Commercial Quartz",
+    subtitle: "Engineered for Performance",
     description:
-      "From engineered hardwood to luxury vinyl plank (LVP), we provide flooring that enhances the value of your property. We specialize in subfloor preparation to guarantee a squeak-free, long-lasting result.",
+      "Miami's high-traffic commercial spaces require floors that can withstand constant use without sacrificing style. Our Quartz system broadcasts multi-colored quartz aggregates into a high-strength resin, creating a slip-resistant, textured floor that is as tough as granite but much easier to maintain.",
+    image: "/portfolio/a2.jpg",
     benefits: [
-      "Enhanced property value",
-      "Eco-friendly material options",
-      "Professional sanding & finishing",
-      "Moisture-resistant LVP",
+      "Extreme Durability",
+      "Slip Resistant",
+      "Impact Tolerant",
+      "Low Maintenance",
     ],
   },
-  remodeling: {
-    title: "Full-Scale Remodeling",
-    subtitle: "Transforming spaces from floor to ceiling.",
-    image:
-      "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?q=80&w=2070",
+  "polyaspartic-systems": {
+    title: "Industrial Polyaspartic",
+    subtitle: "24-Hour Return-to-Service",
     description:
-      "Ready for a complete change? Our remodeling services cover everything from kitchen updates to full living room transformations, integrating new flooring with modern architectural elements.",
+      "When time is of the essence, our Industrial Polyaspartic coatings are the solution. Offering 4x the abrasion resistance of standard epoxy and complete UV stability (no yellowing in the Florida sun), this system is perfect for upscale garages and industrial facilities that need a fast, durable transformation.",
+    image: "/portfolio/a3.jpg",
     benefits: [
-      "Complete structural updates",
-      "Integrated lighting & flooring",
-      "Modern aesthetic design",
-      "Turnkey project management",
+      "Rapid Cure Time",
+      "UV Stable",
+      "4x Stronger Than Epoxy",
+      "Climate Resistant",
     ],
   },
 };
+export const HERO_IMAGES = [
+  "/portfolio/header1.jpg",
+  "/portfolio/header2.jpg",
+  "/portfolio/header3.jpg",
+];
+
+export const puzzleImages = [
+  "/portfolio/header1.jpg",
+  "/portfolio/a1.jpg",
+  "/portfolio/a3.jpg",
+  "/portfolio/a7.jpg",
+];
+
+export const DEFAULT_PROJECTS = [
+  {
+    id: "d1",
+    url: "/portfolio/a1.jpg",
+    title: "Luxury Epoxy",
+    category: "Interior",
+  },
+  {
+    id: "d2",
+    url: "/portfolio/a2.jpg",
+    title: "Polished Finish",
+    category: "Commercial",
+  },
+  {
+    id: "d3",
+    url: "/portfolio/a3.jpg",
+    title: "Artistic Quartz",
+    category: "Design",
+  },
+  {
+    id: "d4",
+    url: "/portfolio/a5.jpg",
+    title: "Modern Flake",
+    category: "Garage",
+  },
+  {
+    id: "d5",
+    url: "/portfolio/a6.jpg",
+    title: "Industrial Strength",
+    category: "Industrial",
+  },
+  {
+    id: "d6",
+    url: "/portfolio/a7.jpg",
+    title: "High Gloss",
+    category: "Residential",
+  },
+  {
+    id: "d7",
+    url: "/portfolio/a8.jpg",
+    title: "High Gloss2",
+    category: "Residential2",
+  },
+  {
+    id: "d8",
+    url: "/portfolio/a9.jpg",
+    title: "High Glosa3",
+    category: "Residential3",
+  },
+  {
+    id: "d9",
+    url: "/portfolio/a10.jpg",
+    title: "High Gloss",
+    category: "Residential4",
+  },
+  {
+    id: "d10",
+    url: "/portfolio/a4.jpg",
+    title: "High Gloss",
+    category: "Residential5",
+  },
+];
+
+export const BACKGROUNDS = [
+  "/portfolio/a1.jpg",
+  "/portfolio/a2.jpg",
+  "/portfolio/a3.jpg",
+];

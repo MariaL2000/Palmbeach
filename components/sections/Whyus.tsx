@@ -1,16 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { WHY } from "@/data/site";
+import { BACKGROUNDS, WHY } from "@/data/site";
 import SectionHeader from "../ui/SectionHeader";
 import { libreBaskerville } from "@/app/fonts/fonts";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldCheck, HardHat, Sparkles } from "lucide-react";
-
-const BACKGROUNDS = [
-  "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80",
-  "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=1400&q=80",
-  "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1400&q=80",
-];
 
 const icons = [
   <ShieldCheck size={28} key="i1" className="mb-3 text-[var(--buttons)]" />,
@@ -30,12 +24,11 @@ const WhyUs = () => {
       const rect = el.getBoundingClientRect();
       const scrollHeight = el.offsetHeight - window.innerHeight;
 
+      // Calculamos el progreso basado en el scroll
       const scrolled = -rect.top;
       const progress = Math.max(0, Math.min(0.99, scrolled / scrollHeight));
 
-      // Dividimos el progreso en 3 tramos para las 3 imágenes
       const newIdx = Math.floor(progress * 3);
-
       setActive((prev) => (prev !== newIdx ? newIdx : prev));
     };
 
@@ -50,58 +43,63 @@ const WhyUs = () => {
       id="why"
       ref={containerRef}
       className="relative isolate"
-      // Aumentamos a 450vh para que el scroll se sienta más largo/lento por cada sección
-      style={{ height: "450vh" }}
+      style={{ height: "400vh" }} // Ajustado para un scroll más natural
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <div className="absolute inset-0 bg-black">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col">
+        {/* Fondo con AnimatePresence */}
+        <div className="absolute inset-0 bg-black -z-10">
           <AnimatePresence mode="popLayout">
             <motion.img
               key={active}
               src={BACKGROUNDS[active]}
-              // Transición más rápida (0.3s) y directa para optimizar la respuesta visual
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: "linear" }}
+              transition={{ duration: 0.6 }}
               className="absolute inset-0 h-full w-full object-cover"
-              alt="Elite Floors"
+              alt="Elite Floors Background"
             />
           </AnimatePresence>
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        <div className="relative z-10 h-full container mx-auto px-6 flex flex-col pt-40 md:pt-52">
-          <div className="mb-10">
+        {/* Contenido */}
+        <div className="relative z-10 h-full container mx-auto px-6 flex flex-col justify-center">
+          <div className="mb-10 mt-10 md:mt-0">
             <SectionHeader
               title="Why Us"
               center={false}
-              titleColor="var(--primary)"
+              titleColor="white" // Forzado a blanco para legibilidad sobre el fondo
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl">
+          {/* Grid Responsivo Optimizado */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl w-full">
             {WHY.slice(0, 3).map((w, i) => (
               <motion.div
                 key={i}
                 initial={false}
                 animate={{
                   borderColor:
-                    i === active ? "var(--buttons)" : "rgba(255,255,255,0)",
+                    i === active ? "var(--buttons)" : "rgba(255,255,255,0.1)",
                   y: i === active ? -10 : 0,
+                  opacity: 1,
                   backgroundColor:
                     i === active
-                      ? "rgba(0, 51, 102, 0.95)"
-                      : "rgba(0, 51, 102, 0.75)",
+                      ? "rgba(10, 25, 47, 0.95)"
+                      : "rgba(10, 25, 47, 0.7)",
                 }}
-                className="p-8 backdrop-blur-md border-l-4 transition-all duration-300"
+                className={`p-6 md:p-8 backdrop-blur-md border-l-4 border-t md:border-t-0 transition-all duration-300 rounded-r-xl md:rounded-none ${
+                  // En móviles, si no es la activa, la hacemos más pequeña para que quepan todas
+                  i !== active ? "hidden md:block" : "block"
+                }`}
               >
                 <div className={libreBaskerville.className}>
                   {icons[i]}
-                  <h3 className="text-white text-lg font-bold uppercase tracking-widest mb-3">
+                  <h3 className="text-white text-base md:text-lg font-bold uppercase tracking-widest mb-3">
                     {w.title}
                   </h3>
-                  <p className="text-white/80 text-sm leading-relaxed">
+                  <p className="text-white/80 text-xs md:text-sm leading-relaxed">
                     {i === 0 &&
                       "Premium materials and rigorous standards for a lasting investment."}
                     {i === 1 &&
@@ -112,6 +110,16 @@ const WhyUs = () => {
                 </div>
               </motion.div>
             ))}
+
+            {/* Indicador visual para móviles (opcional) */}
+            <div className="flex gap-2 mt-4 md:hidden justify-center">
+              {[0, 1, 2].map((dot) => (
+                <div
+                  key={dot}
+                  className={`h-1 transition-all duration-300 ${dot === active ? "w-8 bg-[var(--buttons)]" : "w-2 bg-white/30"}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

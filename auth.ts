@@ -14,7 +14,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           where: { email: credentials.email as string },
         });
 
-        // En producción: await bcrypt.compare(credentials.password, user.password)
+        // Verificación simple (En producción usa bcrypt)
         if (user && user.password === credentials.password) {
           return {
             id: user.id,
