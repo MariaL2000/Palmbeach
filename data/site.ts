@@ -18,19 +18,19 @@ export const SERVICES = [
     title: "Metallic Art Epoxy",
     slug: "metallic-epoxy",
     desc: "The pinnacle of interior luxury. We create bespoke, seamless floors that mimic the movement of liquid marble, designed specifically for high-end Miami residences.",
-    img: "/portfolio/a1.jpg",
+    img: "/portfoliof/a1.jpg",
   },
   {
     title: "Commercial Quartz",
     slug: "commercial-quartz",
     desc: "Unbeatable durability meets aesthetic precision. A high-performance system engineered for heavy traffic, offering superior slip resistance and a sophisticated finish.",
-    img: "/portfolio/a2.jpg",
+    img: "/portfoliof/a2.jpg",
   },
   {
     title: "Industrial Polyaspartic",
     slug: "polyaspartic-systems",
     desc: "Rapid-cure technology for fast-paced environments. Our coatings offer 4x the strength of standard epoxy, with complete UV stability and 24-hour return-to-service.",
-    img: "/portfolio/a3.jpg",
+    img: "/portfoliof/a3.jpg",
   },
 ];
 
@@ -127,7 +127,6 @@ export const FAQS = [
     a: "Yes — from Jupiter to Boca Raton, including West Palm Beach and the islands.",
   },
 ];
-// data/site.ts
 
 export const SERVICES_DETAILS = {
   "metallic-epoxy": {
@@ -135,7 +134,7 @@ export const SERVICES_DETAILS = {
     subtitle: "Liquid Marble Aesthetics",
     description:
       "Our Metallic Art Epoxy systems represent the pinnacle of decorative flooring. Designed for high-end Miami residences, this system uses metallic pigments to create a 3D effect that mimics natural stone, marble, or even deep-sea currents. It is completely seamless, antimicrobial, and finished with a high-performance topcoat for lasting brilliance.",
-    image: "/portfolio/a1.jpg",
+    image: "/portfoliof/a1.jpg",
     benefits: [
       "Bespoke Designs",
       "Seamless Finish",
@@ -148,7 +147,7 @@ export const SERVICES_DETAILS = {
     subtitle: "Engineered for Performance",
     description:
       "Miami's high-traffic commercial spaces require floors that can withstand constant use without sacrificing style. Our Quartz system broadcasts multi-colored quartz aggregates into a high-strength resin, creating a slip-resistant, textured floor that is as tough as granite but much easier to maintain.",
-    image: "/portfolio/a2.jpg",
+    image: "/portfoliof/a2.jpg",
     benefits: [
       "Extreme Durability",
       "Slip Resistant",
@@ -161,7 +160,7 @@ export const SERVICES_DETAILS = {
     subtitle: "24-Hour Return-to-Service",
     description:
       "When time is of the essence, our Industrial Polyaspartic coatings are the solution. Offering 4x the abrasion resistance of standard epoxy and complete UV stability (no yellowing in the Florida sun), this system is perfect for upscale garages and industrial facilities that need a fast, durable transformation.",
-    image: "/portfolio/a3.jpg",
+    image: "/portfoliof/a3.jpg",
     benefits: [
       "Rapid Cure Time",
       "UV Stable",
@@ -170,84 +169,85 @@ export const SERVICES_DETAILS = {
     ],
   },
 };
+
 export const HERO_IMAGES = [
-  "/portfolio/header1.jpg",
-  "/portfolio/header2.jpg",
-  "/portfolio/header3.jpg",
+  "/portfoliof/header1.jpg",
+  "/portfoliof/header2.jpg",
+  "/portfoliof/header3.jpg",
 ];
 
 export const puzzleImages = [
-  "/portfolio/header1.jpg",
-  "/portfolio/a1.jpg",
-  "/portfolio/a3.jpg",
-  "/portfolio/a7.jpg",
+  "/portfoliof/header1.jpg",
+  "/portfoliof/a1.jpg",
+  "/portfoliof/a3.jpg",
+  "/portfoliof/a7.jpg",
 ];
 
 export const DEFAULT_PROJECTS = [
   {
     id: "d1",
-    url: "/portfolio/a1.jpg",
+    url: "/portfoliof/a1.jpg",
     title: "Luxury Epoxy",
     category: "Interior",
   },
   {
     id: "d2",
-    url: "/portfolio/a2.jpg",
+    url: "/portfoliof/a2.jpg",
     title: "Polished Finish",
     category: "Commercial",
   },
   {
     id: "d3",
-    url: "/portfolio/a3.jpg",
+    url: "/portfoliof/a3.jpg",
     title: "Artistic Quartz",
     category: "Design",
   },
   {
     id: "d4",
-    url: "/portfolio/a5.jpg",
+    url: "/portfoliof/a5.jpg",
     title: "Modern Flake",
     category: "Garage",
   },
   {
     id: "d5",
-    url: "/portfolio/a6.jpg",
+    url: "/portfoliof/a6.jpg",
     title: "Industrial Strength",
     category: "Industrial",
   },
   {
     id: "d6",
-    url: "/portfolio/a7.jpg",
+    url: "/portfoliof/a7.jpg",
     title: "High Gloss",
     category: "Residential",
   },
   {
     id: "d7",
-    url: "/portfolio/a8.jpg",
+    url: "/portfoliof/a8.jpg",
     title: "High Gloss2",
     category: "Residential2",
   },
   {
     id: "d8",
-    url: "/portfolio/a9.jpg",
+    url: "/portfoliof/a9.jpg",
     title: "High Glosa3",
     category: "Residential3",
   },
   {
     id: "d9",
-    url: "/portfolio/a10.jpg",
+    url: "/portfoliof/a10.jpg",
     title: "High Gloss",
     category: "Residential4",
   },
   {
     id: "d10",
-    url: "/portfolio/a4.jpg",
+    url: "/portfoliof/a4.jpg",
     title: "High Gloss",
     category: "Residential5",
   },
 ];
 
 export const BACKGROUNDS = [
-  "/portfolio/a1.jpg",
-  "/portfolio/a2.jpg",
-  "/portfolio/a3.jpg",
+  "/portfoliof/a1.jpg",
+  "/portfoliof/a2.jpg",
+  "/portfoliof/a3.jpg",
 ];

@@ -24,7 +24,7 @@ async function main() {
   for (let i = 1; i <= 16; i++) {
     await prisma.projectImage.create({
       data: {
-        url: `/portfolio/a${i}.jpg`, // Ruta local en public/portfolio/aX.jpg
+        url: `/portfoliof/a${i}.jpg`, // Ruta local en public/portfolio/aX.jpg
         publicId: `local-seed-${i}`, // ID ficticio para evitar nulos
         category: categories[i % categories.length],
         title: `Elite Project ${i}`,
