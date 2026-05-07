@@ -126,7 +126,7 @@ const Footer = () => {
               <address className="not-italic text-sm leading-loose">
                 215 Royal Palm Way
                 <br />
-                Palm Beach, FL 33480
+                Palm Coast, FL 33480
                 <br />
                 <span className="text-[var(--buttons)] font-bold mt-2 inline-block">
                   South Florida Region

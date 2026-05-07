@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Medra ProWorks | Luxury Flooring in Palm Beach",
+  title: "Medra ProWorks | Luxury Flooring in Palm Coast",
   description:
     "High-end floor coatings, tile installation, and remodeling services in Florida.",
 };

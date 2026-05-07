@@ -67,7 +67,7 @@ export default function EliteLuxuryFloors() {
             <div className="h-px w-12 bg-[var(--buttons)] mb-2" />
             <div className="flex items-center justify-center gap-2 text-white tracking-[0.3em] uppercase text-xs md:text-base font-medium">
               <MapPin className="w-4 h-4 text-[var(--buttons)]" />
-              Palm Beach, Fl
+              Palm Coast, Fl
             </div>
           </div>
         </div>

@@ -90,7 +90,7 @@ export const MATERIALS = [
 export const REVIEWS = [
   {
     name: "Sarah M.",
-    city: "Palm Beach",
+    city: "Palm ",
     text: "Absolutely flawless metallic epoxy in our foyer. Reflective like glass.",
   },
   {
