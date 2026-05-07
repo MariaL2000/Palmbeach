@@ -1,5 +1,5 @@
 "use client";
-import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ArrowRight, Lock } from "lucide-react"; // Añadido Lock
 import logo from "@/public/logo.png";
 import Link from "next/link";
 import { lora, libreBaskerville } from "@/app/fonts/fonts";
@@ -9,10 +9,9 @@ const Footer = () => {
 
   return (
     <footer className="bg-[var(--primary)] text-white overflow-hidden">
-      {/* Sección Principal */}
       <div className="container mx-auto py-20 px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-          {/* Columna 1: Branding */}
+          {/* Branding */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="inline-block group">
               <img
@@ -37,7 +36,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Columna 2: Quick Links (Rutas exactas Navbar) */}
+          {/* Quick Links */}
           <div>
             <h4
               className={`${libreBaskerville.className} text-lg mb-8 text-[var(--buttons)] font-bold`}
@@ -68,7 +67,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Columna 3: Contact Info */}
+          {/* Contact Info */}
           <div>
             <h4
               className={`${libreBaskerville.className} text-lg mb-8 text-[var(--buttons)] font-bold`}
@@ -111,7 +110,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Columna 4: Service Areas */}
+          {/* Headquarters */}
           <div>
             <h4
               className={`${libreBaskerville.className} text-lg mb-8 text-[var(--buttons)] font-bold`}
@@ -133,21 +132,25 @@ const Footer = () => {
                 </span>
               </address>
             </div>
-            <div className="mt-8 pt-8 border-t border-white/10 flex items-center gap-4 text-white/50 text-xs">
-              <Clock size={16} />
-              <span>Mon - Sat: 8:00 AM - 6:00 PM</span>
-            </div>
           </div>
         </div>
       </div>
 
-      {/* Barra Inferior (Primary Rebajado) */}
+      {/* Barra Inferior */}
       <div className="bg-black/20 py-8">
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] uppercase tracking-[0.2em] font-black text-white/40">
           <p>© {currentYear} Medra ProWorks. High-End Flooring Solutions.</p>
           <div className="flex items-center gap-8">
             <span>Licensed & Insured</span>
             <span className="text-white/60">FL CGC #1530912</span>
+
+            {/* LOGIN REDIRIGIDO AQUÍ */}
+            <Link
+              href="/admin/login"
+              className="hover:text-[var(--buttons)] transition-colors"
+            >
+              <Lock size={14} />
+            </Link>
           </div>
           <p className="hover:text-white transition-colors cursor-default">
             Crafted for Perfection

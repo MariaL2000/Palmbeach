@@ -12,32 +12,25 @@ export const COMPANY = {
   phoneHref: "tel:5612857825",
   email: "medraproworks@gmail.com",
 };
-
 export const SERVICES = [
   {
     title: "Metallic Art Epoxy",
     slug: "metallic-epoxy",
-    desc: "The pinnacle of interior luxury. We create bespoke, seamless floors that mimic the movement of liquid marble, designed specifically for high-end Miami residences.",
+    desc: "Transform your interior into a masterpiece with high-luster seamless finishes. Our artisanal metallic systems replicate the flowing elegance of liquid marble, offering a sophisticated floor that defines luxury living in Palm Coast.",
     img: "/portfoliof/a1.jpg",
   },
   {
-    title: "Commercial Quartz",
-    slug: "commercial-quartz",
-    desc: "Unbeatable durability meets aesthetic precision. A high-performance system engineered for heavy traffic, offering superior slip resistance and a sophisticated finish.",
+    title: "Elite Wood-Grain Finish",
+    slug: "elite-wood-grain",
+    desc: "The warmth of hardwood meets industrial resilience. Engineered for Florida's coastal humidity, this waterproof system provides a timeless wood aesthetic with high-performance protection against sand and heavy traffic.",
     img: "/portfoliof/a2.jpg",
   },
   {
-    title: "Industrial Polyaspartic",
-    slug: "polyaspartic-systems",
-    desc: "Rapid-cure technology for fast-paced environments. Our coatings offer 4x the strength of standard epoxy, with complete UV stability and 24-hour return-to-service.",
+    title: "Heritage Quartz & Polyaspartic",
+    slug: "heritage-quartz",
+    desc: "Next-generation rapid-cure coatings for premium garages and patios. This UV-stable system offers 4x the strength of standard epoxy, featuring a slip-resistant texture that withstands the salt-air environment with ease.",
     img: "/portfoliof/a3.jpg",
   },
-];
-
-export const GALLERY_SCROLL = [
-  "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80",
-  "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=100",
-  "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=100",
 ];
 
 export const WHY = [
@@ -58,32 +51,31 @@ export const WHY = [
     desc: "Built for Palm Beach climate and lifestyle.",
   },
 ];
-
 export const MATERIALS = [
   {
-    name: "100% Solids Epoxy",
-    img: "/1.jpg",
-    desc: "Industrial-grade resin that bonds permanently to concrete for unmatched durability.",
+    name: "Marazzi Italian Finish",
+    img: "/marazzi.jpg",
+    desc: "Renowned for its heritage and aesthetic precision, Marazzi offers high-end surfaces that combine Italian design with extreme durability for a timeless architectural look.",
   },
   {
-    name: "Polyaspartic Topcoat",
-    img: "/2.jpg",
-    desc: "UV-stable, fast-cure topcoat that resists yellowing under Florida sun.",
+    name: "Luxury Vinyl Planks",
+    img: "/luxuryvinil.webp",
+    desc: "The perfect fusion of warmth and resilience. This waterproof flooring provides the authentic look of natural wood while offering a high-performance surface for coastal humidity.",
   },
   {
-    name: "Decorative Vinyl Flakes",
-    img: "/3.jpg",
-    desc: "Multi-tone chips that add texture, traction and a custom designer look.",
+    name: "Pure Porcelain White",
+    img: "/porcelainwhite.webp",
+    desc: "A luminous, seamless porcelain system that reflects modern minimalism. Its high-gloss finish creates an expansive, clean atmosphere that is both scratch-resistant and majestic.",
   },
   {
-    name: "Quartz Aggregates",
-    img: "/4.jpg",
-    desc: "Natural quartz grains for premium slip resistance and warm color depth.",
+    name: "Prescott Woburn Heritage",
+    img: "/prescottwoburn.jpg",
+    desc: "Classic grain patterns meet modern engineering. This material is designed for those seeking a robust, high-traffic solution without sacrificing the rich character of premium timber.",
   },
   {
-    name: "Metallic Pigments",
-    img: "/5.jpg",
-    desc: "Reflective pearl pigments that create dramatic three-dimensional swirls.",
+    name: "Bespoke Custom Material",
+    img: "/poster.png",
+    desc: "At Medra ProWorks, your vision is our blueprint. We offer a fully professional service where you can choose your own custom material. Our experts engineer each floor with surgical precision to match your specific aesthetic and technical requirements. Contact us at medraproworks@gmail.com to start your custom project.",
   },
 ];
 
@@ -104,30 +96,32 @@ export const REVIEWS = [
     text: "Pool deck stays cool and looks gorgeous. Highly recommend Impact.",
   },
 ];
-
 export const FAQS = [
   {
-    q: "How long does an installation take?",
-    a: "Most residential projects are completed in 1–3 days, depending on square footage and prep needed.",
+    q: "What is the typical timeline for a professional installation?",
+    a: "Most residential projects in Palm Coast are executed within 1 to 3 business days. This timeline includes our meticulous diamond-grinding surface preparation, base coat application, and the final high-performance topcoat. Larger scale commercial projects may require a custom schedule tailored to minimize operational downtime.",
   },
   {
-    q: "Are your floors slip-resistant?",
-    a: "Yes. We add anti-slip aggregates to all outdoor and wet-area installations for safety.",
+    q: "How do your flooring systems handle the Florida climate and slip resistance?",
+    a: "Our systems are engineered specifically for the coastal Florida environment. We integrate premium anti-slip aggregates into all installations—especially for pool decks, lanais, and garages—ensuring a safe, high-traction surface that meets industrial safety standards without compromising the floor's aesthetic brilliance.",
   },
   {
-    q: "How do I maintain my new floor?",
-    a: "Just sweep and damp-mop with a pH-neutral cleaner. No waxing required.",
+    q: "What maintenance is required to preserve the floor's integrity?",
+    a: "One of the primary benefits of our systems is their low-maintenance nature. Regular sweeping and occasional damp-mopping with a pH-neutral cleaner are sufficient to maintain the pristine finish. Unlike traditional concrete or tile, our non-porous surfaces never require waxing, buffing, or aggressive chemical treatments.",
   },
   {
-    q: "Do you offer warranties?",
-    a: "We back every install with a 10-year warranty against peeling and delamination.",
+    q: "What does the Medra ProWorks warranty specifically cover?",
+    a: "We stand behind our craftsmanship with a comprehensive 10-year professional warranty. This covers the most critical concerns: peeling, bubbling, and delamination. Our commitment is to provide a permanent bonding solution that withstands the test of time and the unique humidity of the Flagler County area.",
   },
   {
-    q: "Do you serve all of Palm Beach County?",
-    a: "Yes — from Jupiter to Boca Raton, including West Palm Beach and the islands.",
+    q: "What areas do you serve beyond Palm Coast?",
+    a: "Medra ProWorks proudly services the entire Northeast Florida corridor. While we are based in Palm Coast, our elite installation teams cover Flagler Beach, Ormond Beach, St. Augustine, Daytona Beach, and the surrounding upscale communities across Flagler and St. Johns counties.",
+  },
+  {
+    q: "Can I choose a custom aesthetic for my project?",
+    a: "Absolutely. We specialize in bespoke flooring solutions. From artisan metallic pigments that mimic natural stone to custom-blended decorative flakes, we work closely with you to engineer a material palette that perfectly complements your property's architectural style and your personal vision.",
   },
 ];
-
 export const SERVICES_DETAILS = {
   "metallic-epoxy": {
     title: "Metallic Art Epoxy",

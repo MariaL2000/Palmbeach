@@ -6,6 +6,7 @@ import AboutUs from "@/components/sections/About";
 import SupportSection from "@/components/sections/Supportsection";
 import WhyUs from "@/components/sections/Whyus";
 import Reviews from "@/components/sections/Reviews";
+import ComparisonSection from "@/components/sections/ComparisionSection";
 
 export default async function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default async function HomePage() {
       <AboutUs />
       <Services />
       <Gallery />
+      <ComparisonSection />
       <Materials />
       <SupportSection />
       <WhyUs />

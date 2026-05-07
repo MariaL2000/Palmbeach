@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Lock, Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import Link from "next/link";
 import logo from "@/public/logo.png";
 import { lora } from "@/app/fonts/fonts";
@@ -30,7 +30,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Bloquear scroll cuando el menú está abierto
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "unset";
   }, [mobileOpen]);
@@ -83,6 +82,8 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+
+            {/* DROPDOWN WHY US RESTAURADO */}
             <li className="relative group cursor-pointer py-4">
               <div
                 className="relative flex items-center gap-1 text-[13px] uppercase tracking-[0.15em] font-bold transition-colors"
@@ -94,25 +95,31 @@ export default function Navbar() {
                   className="group-hover:rotate-180 transition-transform duration-300"
                 />
               </div>
-              {/* Dropdown desktop... */}
+
+              <div className="absolute top-full left-0 w-48 bg-white shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 rounded-b-lg border-t-2 border-[var(--buttons)]">
+                {whyUsSublinks.map((sub) => (
+                  <Link
+                    key={sub.label}
+                    href={sub.href}
+                    className="block px-6 py-4 text-[11px] uppercase tracking-widest font-bold text-[var(--primary)] hover:bg-gray-50 hover:text-[var(--buttons)] transition-colors"
+                  >
+                    {sub.label}
+                  </Link>
+                ))}
+              </div>
             </li>
           </ul>
 
           <div className="hidden lg:flex items-center gap-6">
-            <Link
-              href="/admin/login"
-              style={{ color: isScrolled ? "var(--primary)" : "white" }}
-            >
-              <Lock size={20} />
-            </Link>
+            {/* El candado de login ha sido removido de aquí */}
             <ActionButton
               href="tel:5612857825"
               label="Call Now"
               variant="primary"
+              icon={<Phone size={16} />}
             />
           </div>
 
-          {/* BOTÓN HAMBURGUESA (Solo abre) */}
           {!mobileOpen && (
             <button
               className={`lg:hidden p-2 transition-colors ${isScrolled ? "text-gray-900" : "text-white"}`}
@@ -134,7 +141,6 @@ export default function Navbar() {
             transition={{ type: "tween", duration: 0.3 }}
             className="fixed inset-0 z-[150] bg-[var(--primary)] flex flex-col lg:hidden"
           >
-            {/* CABECERA DEL MENÚ (Contiene la X de cierre) */}
             <div className="flex justify-between items-center px-6 py-6 border-b border-white/10">
               <span className="text-xl font-bold text-white tracking-widest uppercase">
                 Navigation
@@ -147,7 +153,6 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* LINKS */}
             <div className="flex-1 overflow-y-auto px-8 py-10">
               <ul className="flex flex-col gap-4">
                 {[...links, ...whyUsSublinks].map((link) => (
@@ -164,12 +169,12 @@ export default function Navbar() {
               </ul>
             </div>
 
-            {/* BOTÓN DE ACCIÓN FIJO AL FINAL */}
             <div className="mt-auto">
               <ActionButton
                 href="tel:5612857825"
                 label="Call Now"
                 variant="primary"
+                icon={<Phone size={22} />}
                 className="w-full !bg-[var(--buttons)] !text-[var(--primary)] py-8 text-xl rounded-none font-black"
               />
             </div>

@@ -69,7 +69,7 @@ const WhyUs = () => {
             <SectionHeader
               title="Why Us"
               center={false}
-              titleColor="white" // Forzado a blanco para legibilidad sobre el fondo
+              titleColor="var(--primary)"
             />
           </div>
 

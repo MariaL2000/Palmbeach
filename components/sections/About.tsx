@@ -89,7 +89,7 @@ export default function AboutUs() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.2 }}
-                  className={`rounded-2xl overflow-hidden shadow-2xl relative ${
+                  className={`rounded-xl overflow-hidden shadow-2xl relative ${
                     index === 0
                       ? "col-span-8 row-span-7"
                       : index === 1

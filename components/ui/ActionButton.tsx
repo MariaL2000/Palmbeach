@@ -2,12 +2,14 @@
 import Link from "next/link";
 import { lora } from "@/app/fonts/fonts";
 import { ArrowRight } from "lucide-react";
+import React, { ReactNode } from "react";
 
 interface ActionButtonProps {
   href: string;
   label: string;
   variant?: "primary" | "secondary";
   className?: string;
+  icon?: ReactNode;
 }
 
 const ActionButton: React.FC<ActionButtonProps> = ({
@@ -15,6 +17,7 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   label,
   variant = "primary",
   className,
+  icon,
 }) => {
   const isPrimary = variant === "primary";
 
@@ -36,11 +39,21 @@ const ActionButton: React.FC<ActionButtonProps> = ({
     >
       <span>{label}</span>
 
-      {/* Flecha con animación de movimiento */}
-      <ArrowRight
-        size={18}
-        className="transition-transform duration-300 group-hover:translate-x-2"
-      />
+      {/* 
+          LÓGICA DINÁMICA: 
+          Si existe 'icon', lo muestra. 
+          Si no, muestra la flecha de siempre.
+      */}
+      {icon ? (
+        <div className="transition-transform duration-300 group-hover:scale-110">
+          {icon}
+        </div>
+      ) : (
+        <ArrowRight
+          size={18}
+          className="transition-transform duration-300 group-hover:translate-x-2"
+        />
+      )}
     </Link>
   );
 };

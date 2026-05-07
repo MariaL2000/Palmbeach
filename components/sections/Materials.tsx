@@ -5,7 +5,6 @@ import ActionButton from "../ui/ActionButton";
 import { lora } from "@/app/fonts/fonts";
 
 export default function MaterialsMarquee() {
-  // Duplicamos los items para que el scroll infinito sea fluido
   const items = [...MATERIALS, ...MATERIALS];
 
   return (
@@ -22,36 +21,40 @@ export default function MaterialsMarquee() {
         />
       </div>
 
-      {/* Contenedor del Marquee */}
       <div className="relative flex overflow-x-hidden mb-12">
         <div className="flex animate-marquee whitespace-nowrap gap-6 py-4">
           {items.map((m, i) => (
             <div
               key={`${m.name}-${i}`}
-              className="group relative h-[250px] md:h-[320px] w-[300px] md:w-[400px] shrink-0 overflow-hidden shadow-xl transition-all duration-500"
+              className="group relative h-[250px] md:h-[320px] w-[300px] md:w-[400px] shrink-0 overflow-hidden shadow-xl transition-all duration-500 rounded-sm"
             >
               <img
                 src={m.img}
                 alt={m.name}
-                className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700"
+                className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-1000"
               />
-              {/* Overlay con nombre del material */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
-                <span className="text-[var(--buttons)] text-[10px] tracking-[0.3em] uppercase font-bold mb-1">
-                  Grade A+
-                </span>
+
+              {/* Overlay con degradado profundo y sombreado de texto */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
                 <h4
-                  className={`${lora.className} text-white text-xl md:text-2xl`}
+                  className={`${lora.className} text-xl md:text-2xl tracking-tight transition-all duration-500`}
+                  style={{
+                    color: "white",
+                    // Sombreado multicapa para máxima legibilidad y profundidad
+                    textShadow:
+                      "0px 2px 10px rgba(0, 0, 0, 0.8), 0px 4px 20px rgba(0, 0, 0, 0.4)",
+                  }}
                 >
                   {m.name}
                 </h4>
+                {/* Línea decorativa en color buttons que aparece en hover */}
+                <div className="w-0 group-hover:w-10 h-[2px] bg-[var(--buttons)] mt-2 transition-all duration-500 opacity-80"></div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Botón de acción centrado */}
       <div className="flex justify-center mt-4">
         <ActionButton
           href="/materials"
@@ -74,7 +77,6 @@ export default function MaterialsMarquee() {
           width: fit-content;
           animation: marquee 35s linear infinite;
         }
-        /* Pausar al pasar el mouse para que el usuario pueda ver los materiales */
         .animate-marquee:hover {
           animation-play-state: paused;
         }

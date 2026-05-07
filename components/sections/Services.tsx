@@ -4,22 +4,22 @@ import SectionHeader from "../ui/SectionHeader";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { lora, libreBaskerville } from "@/app/fonts/fonts";
-import ActionButton from "../ui/ActionButton"; // Restauramos tu botón original
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
-};
+import ActionButton from "../ui/ActionButton";
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: {
+    opacity: 0,
+    y: 80,
+    clipPath: "inset(10% 0% 10% 0%)",
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1, ease: [0.215, 0.61, 0.355, 1] },
+    clipPath: "inset(0% 0% 0% 0%)",
+    transition: {
+      duration: 1.2,
+      ease: [0.215, 0.61, 0.355, 1],
+    },
   },
 };
 
@@ -38,19 +38,21 @@ export default function Services() {
           />
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8">
           {SERVICES.map((s, i) => (
             <motion.article
               key={s.title}
               variants={itemVariants}
-              className="flex flex-col items-center text-center group bg-white border border-primary/10 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-700 relative"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.1 }}
+              className="flex flex-col items-center text-center group bg-white border border-primary/10 overflow-hidden shadow-md hover:shadow-2xl transition-all duration-700 relative rounded-sm" // Bordes suavizados (sm)
             >
+              {/* Número como marca de agua - No ocupa espacio */}
+              <span className="absolute top-4 right-6 text-6xl font-black opacity-[0.04] pointer-events-none select-none z-0">
+                0{i + 1}
+              </span>
+
               {/* Contenedor de Imagen */}
               <div className="w-full aspect-square relative overflow-hidden">
                 <Image
@@ -62,15 +64,12 @@ export default function Services() {
                 />
               </div>
 
-              {/* Contenido de texto centrado responsivamente */}
+              {/* Contenido de texto centrado */}
               <div className="p-8 flex flex-col items-center relative z-10">
                 <h3
                   className={`${libreBaskerville.className} text-2xl font-bold flex flex-col items-center gap-2`}
                   style={{ color: "var(--primary)" }}
                 >
-                  <span className="text-4xl opacity-10 font-serif italic leading-none">
-                    0{i + 1}
-                  </span>
                   {s.title}
                 </h3>
 
@@ -84,17 +83,17 @@ export default function Services() {
                   <ActionButton
                     href={`/services/${s.slug}`}
                     label="Learn More"
-                    variant="primary"
+                    variant="primary" // Restaurado fondo primary
                     className="!px-8 !py-3 !text-[11px] !font-black !uppercase !tracking-widest"
                   />
                 </div>
               </div>
 
-              {/* Borde inferior decorativo */}
+              {/* Borde inferior decorativo que tenías antes */}
               <div className="absolute bottom-0 left-0 w-full h-1 bg-[var(--buttons)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
             </motion.article>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
