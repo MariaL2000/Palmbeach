@@ -12,26 +12,6 @@ export const COMPANY = {
   phoneHref: "tel:5612857825",
   email: "medraproworks@gmail.com",
 };
-export const SERVICES = [
-  {
-    title: "Metallic Art Epoxy",
-    slug: "metallic-epoxy",
-    desc: "Transform your interior into a masterpiece with high-luster seamless finishes. Our artisanal metallic systems replicate the flowing elegance of liquid marble, offering a sophisticated floor that defines luxury living in Palm Coast.",
-    img: "/portfoliof/a1.jpg",
-  },
-  {
-    title: "Elite Wood-Grain Finish",
-    slug: "elite-wood-grain",
-    desc: "The warmth of hardwood meets industrial resilience. Engineered for Florida's coastal humidity, this waterproof system provides a timeless wood aesthetic with high-performance protection against sand and heavy traffic.",
-    img: "/portfoliof/a2.jpg",
-  },
-  {
-    title: "Heritage Quartz & Polyaspartic",
-    slug: "heritage-quartz",
-    desc: "Next-generation rapid-cure coatings for premium garages and patios. This UV-stable system offers 4x the strength of standard epoxy, featuring a slip-resistant texture that withstands the salt-air environment with ease.",
-    img: "/portfoliof/a3.jpg",
-  },
-];
 
 export const WHY = [
   {
@@ -49,33 +29,6 @@ export const WHY = [
   {
     title: "Local Experts",
     desc: "Built for Palm Beach climate and lifestyle.",
-  },
-];
-export const MATERIALS = [
-  {
-    name: "Marazzi Italian Finish",
-    img: "/marazzi.jpg",
-    desc: "Renowned for its heritage and aesthetic precision, Marazzi offers high-end surfaces that combine Italian design with extreme durability for a timeless architectural look.",
-  },
-  {
-    name: "Luxury Vinyl Planks",
-    img: "/luxuryvinil.webp",
-    desc: "The perfect fusion of warmth and resilience. This waterproof flooring provides the authentic look of natural wood while offering a high-performance surface for coastal humidity.",
-  },
-  {
-    name: "Pure Porcelain White",
-    img: "/porcelainwhite.webp",
-    desc: "A luminous, seamless porcelain system that reflects modern minimalism. Its high-gloss finish creates an expansive, clean atmosphere that is both scratch-resistant and majestic.",
-  },
-  {
-    name: "Prescott Woburn Heritage",
-    img: "/prescottwoburn.jpg",
-    desc: "Classic grain patterns meet modern engineering. This material is designed for those seeking a robust, high-traffic solution without sacrificing the rich character of premium timber.",
-  },
-  {
-    name: "Bespoke Custom Material",
-    img: "/poster.png",
-    desc: "At Medra ProWorks, your vision is our blueprint. We offer a fully professional service where you can choose your own custom material. Our experts engineer each floor with surgical precision to match your specific aesthetic and technical requirements. Contact us at medraproworks@gmail.com to start your custom project.",
   },
 ];
 
@@ -122,44 +75,51 @@ export const FAQS = [
     a: "Absolutely. We specialize in bespoke flooring solutions. From artisan metallic pigments that mimic natural stone to custom-blended decorative flakes, we work closely with you to engineer a material palette that perfectly complements your property's architectural style and your personal vision.",
   },
 ];
+
 export const SERVICES_DETAILS = {
-  "metallic-epoxy": {
-    title: "Metallic Art Epoxy",
-    subtitle: "Liquid Marble Aesthetics",
+  "floor-installation": {
+    slug: "floor-installation",
+    title: "Premium Floor Installation",
+    subtitle: "LVP & Vinyl Specialist",
+    desc: "Expert installation of LVP, Vinyl, and Laminate systems. We focus on precision alignment and subfloor preparation to ensure long-term durability and aesthetics.",
     description:
-      "Our Metallic Art Epoxy systems represent the pinnacle of decorative flooring. Designed for high-end Miami residences, this system uses metallic pigments to create a 3D effect that mimics natural stone, marble, or even deep-sea currents. It is completely seamless, antimicrobial, and finished with a high-performance topcoat for lasting brilliance.",
-    image: "/portfoliof/a1.jpg",
+      "Our technical team specializes in the precise installation of modern flooring. We handle everything from moisture barrier setup to meticulous Luxury Vinyl Plank (LVP) and high-end laminate fitting. We ensure that every joint is seamless and every transition is perfect. Note: To guarantee your total satisfaction with the aesthetic results, all materials are selected and provided by the client, while we provide the master-class craftsmanship.",
+    img: "/service1.jpg",
     benefits: [
-      "Bespoke Designs",
-      "Seamless Finish",
-      "Antimicrobial",
-      "High Gloss Reflectivity",
+      "Precision LVP & Vinyl Fitting",
+      "Laminate Flooring Installation",
+      "Subfloor Leveling & Prep",
+      "Moisture Barrier Application",
     ],
   },
-  "commercial-quartz": {
-    title: "Commercial Quartz",
-    subtitle: "Engineered for Performance",
+  "stone-stone-refinement": {
+    slug: "stone-stone-refinement",
+    title: "Stone & Tile Refinement",
+    subtitle: "Stone Installation Experts",
+    desc: "Professional installation and refinement of stone and tile surfaces with architectural precision and high-end finishing for luxury environments.",
     description:
-      "Miami's high-traffic commercial spaces require floors that can withstand constant use without sacrificing style. Our Quartz system broadcasts multi-colored quartz aggregates into a high-strength resin, creating a slip-resistant, textured floor that is as tough as granite but much easier to maintain.",
-    image: "/portfoliof/a2.jpg",
+      "We transform spaces through the meticulous installation of natural stone, marble, and porcelain tiles. Our process emphasizes structural integrity and aesthetic symmetry, using advanced leveling systems to eliminate lippage. Whether it's a bathroom renovation or a grand living area, we provide the architectural precision your home deserves. The client provides their choice of stone or tile, ensuring the final look matches their unique vision.",
+    img: "/service2.jpg",
     benefits: [
-      "Extreme Durability",
-      "Slip Resistant",
-      "Impact Tolerant",
-      "Low Maintenance",
+      "Stone & Marble Installation",
+      "Porcelain Tile Precision",
+      "Grout & Detail Perfection",
+      "Architectural Surface Refinement",
     ],
   },
-  "polyaspartic-systems": {
-    title: "Industrial Polyaspartic",
-    subtitle: "24-Hour Return-to-Service",
+  "professional-painting": {
+    slug: "professional-painting",
+    title: "Artistic Wall Solutions",
+    subtitle: "Painting & Surface Coating",
+    desc: "Creative painting services for commercial and residential spaces, from structural walls to full interior transformations with premium finishes.",
     description:
-      "When time is of the essence, our Industrial Polyaspartic coatings are the solution. Offering 4x the abrasion resistance of standard epoxy and complete UV stability (no yellowing in the Florida sun), this system is perfect for upscale garages and industrial facilities that need a fast, durable transformation.",
-    image: "/portfoliof/a3.jpg",
+      "Beyond floors, we bring life to your structures through color and texture. Our professional painting division handles upscale residential interiors and commercial locales with high-performance coatings. We focus on rigorous surface preparation—patching, sanding, and priming—to ensure a flawless, long-lasting finish. We work with the client's preferred palette to redefine environments, providing the clean lines and uniform coverage that define professional excellence.",
+    img: "/service3.png",
     benefits: [
-      "Rapid Cure Time",
-      "UV Stable",
-      "4x Stronger Than Epoxy",
-      "Climate Resistant",
+      "Commercial & Residential Painting",
+      "Advanced Surface Preparation",
+      "Premium Interior Wall Finishes",
+      "Creative Texture Consultations",
     ],
   },
 };

@@ -8,10 +8,7 @@ const Reviews = () => {
   const items = [...REVIEWS, ...REVIEWS];
 
   return (
-    <section
-      id="reviews"
-      className="bg-[var(--buttons)]/10 py-24 md:py-32 overflow-hidden"
-    >
+    <section id="reviews" className=" py-24 md:py-32 overflow-hidden">
       <div className="container mx-auto px-6 mb-12">
         <SectionHeader
           eyebrow="Reviews"

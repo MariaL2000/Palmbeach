@@ -2,102 +2,118 @@ import { SERVICES_DETAILS } from "@/data/site";
 import { notFound } from "next/navigation";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ActionButton from "@/components/ui/ActionButton";
+import Hero from "@/components/ui/Hero";
 import { lora, libreBaskerville } from "@/app/fonts/fonts";
 import { CheckCircle2 } from "lucide-react";
 
-// 1. Cambiamos la función a async
 export default async function ServicePage({
   params,
 }: {
-  params: Promise<{ slug: string }>; // 2. Definimos params como una Promise
+  params: Promise<{ slug: string }>;
 }) {
-  // 3. Esperamos a que la promesa se resuelva
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug;
-
+  const { slug } = await params;
   const service = SERVICES_DETAILS[slug as keyof typeof SERVICES_DETAILS];
 
   if (!service) notFound();
 
   return (
     <main className="min-h-screen bg-white">
-      {/* HERO SECTION */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <img
-          src={service.image}
-          alt={service.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <h1
-            className={`${libreBaskerville.className} text-4xl md:text-6xl text-white font-bold mb-4`}
-          >
-            {service.title}
-          </h1>
-          <p
-            className={`${lora.className} text-[var(--buttons)] text-xl italic`}
-          >
-            {service.subtitle}
-          </p>
-        </div>
-      </section>
+      {/* HERO REUTILIZABLE */}
+      <Hero
+        img={service.img}
+        title={service.title}
+        subtitle={service.subtitle}
+        backLink="/#services"
+        backText="Back to Services"
+      />
 
-      {/* CONTENIDO */}
-      <section className="py-20">
-        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <SectionHeader
-              eyebrow="Medra Excellence"
-              title="Transforming Your Vision"
-            />
-            <p className="text-gray-700 text-lg leading-relaxed mb-8">
-              {service.description}
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {service.benefits.map((benefit) => (
-                <div key={benefit} className="flex items-center gap-3">
-                  <CheckCircle2 className="text-[var(--buttons)]" size={20} />
-                  <span className="font-bold text-gray-800 text-sm uppercase tracking-wide">
-                    {benefit}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12">
-              <ActionButton
-                href="/#contact"
-                label="Get a Free Estimate"
-                variant="primary"
+      {/* CONTENIDO PRINCIPAL */}
+      <section className="py-24 relative">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <div className="lg:col-span-7">
+              <SectionHeader
+                eyebrow="Medra Excellence"
+                title="Transforming Your Vision into Reality"
               />
-            </div>
-          </div>
+              <p
+                className={`${lora.className} text-gray-700 text-lg leading-relaxed mb-10 first-letter:text-4xl first-letter:font-bold first-letter:mr-3 first-letter:float-left`}
+              >
+                {service.description}
+              </p>
 
-          <div className="relative">
-            <img
-              src={service.image}
-              alt="Detail"
-              className="relative z-10 shadow-2xl rounded-sm"
-            />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-secondary/10 p-8 rounded-sm border-l-4 border-[var(--buttons)]">
+                {service.benefits.map((benefit) => (
+                  <div key={benefit} className="flex items-start gap-3">
+                    <CheckCircle2
+                      className="text-[var(--buttons)] shrink-0"
+                      size={22}
+                    />
+                    <span className="font-bold text-gray-800 text-xs uppercase tracking-widest leading-tight">
+                      {benefit}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-12 flex flex-col sm:flex-row gap-4">
+                <ActionButton
+                  href="/#contact"
+                  label="Request a Free Estimate"
+                  variant="primary"
+                />
+                <ActionButton
+                  href="tel:5612857825"
+                  label="Talk to an Expert"
+                  variant="secondary"
+                />
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 sticky top-32">
+              <div className="relative group">
+                <div className="absolute -inset-4 border border-[var(--buttons)]/30 rounded-sm translate-x-2 translate-y-2 -z-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
+                <img
+                  src={service.img}
+                  alt="Service detailing"
+                  className="w-full h-auto shadow-2xl rounded-sm grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+                />
+                <div className="absolute bottom-6 left-6 bg-white p-6 shadow-xl max-w-[200px]">
+                  <p className="text-[var(--primary)] font-black text-3xl">
+                    100%
+                  </p>
+                  <p className="text-[10px] uppercase tracking-widest font-bold text-gray-500">
+                    Precision Guarantee
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-[var(--primary)] py-20">
-        <div className="container mx-auto px-6 text-center text-white">
+      <section className="bg-[var(--primary)] py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <p className="text-white text-[20vw] font-black leading-none select-none">
+            MEDRA
+          </p>
+        </div>
+        <div className="container mx-auto px-6 text-center text-white relative z-10">
           <h2
-            className={`${libreBaskerville.className} text-3xl md:text-4xl font-bold mb-6`}
+            className={`${libreBaskerville.className} text-4xl md:text-5xl font-bold mb-8 max-w-3xl mx-auto`}
           >
-            Ready to start your next project?
+            Ready to experience architectural flooring precision?
           </h2>
+          <p className="mb-10 text-white/70 text-lg max-w-xl mx-auto italic font-light">
+            We handle the installation, you enjoy the results. Contact us today
+            for a professional assessment.
+          </p>
           <ActionButton
-            href="tel:5612857825"
-            label="Call Now"
+            href="/#contact"
+            label="Get Started Now"
             variant="secondary"
-            className="!border-white !text-white hover:!bg-white hover:!text-[var(--primary)]"
+            className="!border-white !text-white hover:!bg-white hover:!text-[var(--primary)] !px-12"
           />
         </div>
       </section>

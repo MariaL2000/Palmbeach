@@ -2,10 +2,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import Link from "next/link";
-import logo from "@/public/logo.png";
 import { lora } from "@/app/fonts/fonts";
 import { motion, AnimatePresence } from "framer-motion";
 import ActionButton from "../ui/ActionButton";
+
+// Importación de logos
+import logo from "@/public/logo.png";
+import logo2 from "@/public/logo2.png";
 
 const links = [
   { href: "/#about", label: "About us" },
@@ -30,32 +33,31 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "unset";
-  }, [mobileOpen]);
-
-  const loraClass = lora.className;
-
   return (
     <>
+      <div className="hidden" aria-hidden="true">
+        <img src={logo2.src} alt="preload" />
+      </div>
+
       <header
-        className={`fixed top-0 inset-x-0 z-[100] transition-all duration-500 ${loraClass} ${
+        className={`fixed top-0 inset-x-0 z-[100] transition-all duration-300 ease-in-out ${lora.className} ${
           isScrolled
-            ? "bg-white shadow-md py-2 border-none"
+            ? "bg-white shadow-lg py-2 border-none"
             : "bg-white/10 backdrop-blur-md border-b border-white/20 py-4"
         }`}
       >
         <nav className="container mx-auto px-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
             <img
-              src={logo.src}
-              alt="Logo"
-              className={`transition-all duration-300 ${isScrolled ? "h-14" : "h-16"}`}
+              src={isScrolled ? logo2.src : logo.src}
+              alt="Medra ProWorks"
+              className="object-contain transition-all duration-300 ease-[cubic-bezier(0.2,0,0,1)]"
+              style={{ height: isScrolled ? "48px" : "64px" }}
             />
             <div className="flex flex-col border-l border-gray-400/30 pl-3">
               <span
-                className="text-2xl md:text-3xl font-bold leading-none"
-                style={{ color: "var(--primary)" }}
+                className="text-2xl md:text-3xl font-bold leading-none transition-colors duration-300"
+                style={{ color: isScrolled ? "var(--primary)" : "white" }}
               >
                 Medra
               </span>
@@ -68,7 +70,6 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* DESKTOP MENU */}
           <ul className="hidden lg:flex items-center gap-10">
             {links.map((link) => (
               <li key={link.label}>
@@ -82,8 +83,6 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
-
-            {/* DROPDOWN WHY US RESTAURADO */}
             <li className="relative group cursor-pointer py-4">
               <div
                 className="relative flex items-center gap-1 text-[13px] uppercase tracking-[0.15em] font-bold transition-colors"
@@ -95,7 +94,6 @@ export default function Navbar() {
                   className="group-hover:rotate-180 transition-transform duration-300"
                 />
               </div>
-
               <div className="absolute top-full left-0 w-48 bg-white shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 rounded-b-lg border-t-2 border-[var(--buttons)]">
                 {whyUsSublinks.map((sub) => (
                   <Link
@@ -110,19 +108,19 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <div className="hidden lg:flex items-center gap-6">
-            {/* El candado de login ha sido removido de aquí */}
+          <div className="hidden lg:flex items-center">
             <ActionButton
               href="tel:5612857825"
-              label="Call Now"
+              label="GET A QUOTE"
               variant="primary"
-              icon={<Phone size={16} />}
+              icon={<Phone size={18} />}
+              className="!text-[12px] !px-10 !py-5 shadow-2xl hover:scale-110 transition-all duration-300 active:scale-95 font-black tracking-widest"
             />
           </div>
 
           {!mobileOpen && (
             <button
-              className={`lg:hidden p-2 transition-colors ${isScrolled ? "text-gray-900" : "text-white"}`}
+              className={`lg:hidden p-2 ${isScrolled ? "text-gray-900" : "text-white"}`}
               onClick={() => setMobileOpen(true)}
             >
               <Menu size={32} />
@@ -131,28 +129,23 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* MENÚ MÓVIL FULLSCREEN */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.3 }}
             className="fixed inset-0 z-[150] bg-[var(--primary)] flex flex-col lg:hidden"
           >
             <div className="flex justify-between items-center px-6 py-6 border-b border-white/10">
-              <span className="text-xl font-bold text-white tracking-widest uppercase">
-                Navigation
-              </span>
+              <img src={logo.src} alt="Logo" className="h-10 object-contain" />
               <button
                 onClick={() => setMobileOpen(false)}
-                className="text-white p-2"
+                className="text-white p-2 hover:rotate-90 transition-transform duration-300"
               >
                 <X size={35} />
               </button>
             </div>
-
             <div className="flex-1 overflow-y-auto px-8 py-10">
               <ul className="flex flex-col gap-4">
                 {[...links, ...whyUsSublinks].map((link) => (
@@ -160,7 +153,7 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block py-4 text-2xl font-bold text-white uppercase tracking-tighter"
+                      className="block py-4 text-2xl font-bold text-white uppercase tracking-tighter hover:text-[var(--buttons)] transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -168,16 +161,13 @@ export default function Navbar() {
                 ))}
               </ul>
             </div>
-
-            <div className="mt-auto">
-              <ActionButton
-                href="tel:5612857825"
-                label="Call Now"
-                variant="primary"
-                icon={<Phone size={22} />}
-                className="w-full !bg-[var(--buttons)] !text-[var(--primary)] py-8 text-xl rounded-none font-black"
-              />
-            </div>
+            <ActionButton
+              href="tel:5612857825"
+              label="CALL NOW"
+              variant="primary"
+              icon={<Phone size={22} />}
+              className="w-full !py-8 text-xl rounded-none font-black"
+            />
           </motion.div>
         )}
       </AnimatePresence>

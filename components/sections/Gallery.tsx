@@ -13,7 +13,7 @@ export default function GallerySection() {
     // La acción ahora devuelve directamente el array de la DB
     getAdminProjects().then((res) => {
       // Tomamos solo las primeras 6 para la Home
-      setImages(res?.slice(0, 6) || []);
+      setImages(res?.slice(0, 9) || []);
       setLoading(false);
     });
   }, []);

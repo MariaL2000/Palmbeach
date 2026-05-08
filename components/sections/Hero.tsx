@@ -47,26 +47,22 @@ export default function EliteLuxuryFloors() {
           </div>
         ))}
 
-        {/* Contenido Central - Elevado en z-index para estar sobre las imágenes */}
+        {/* Contenido Central - Ajuste de escala preciso */}
         <div className="relative z-20 h-full flex flex-col items-center justify-center px-6 text-center">
           <Image
             src="/logo.png"
             alt="Medra ProWorks Logo"
-            width={220}
-            height={220}
-            className="w-40 md:w-58 h-auto object-contain mx-auto drop-shadow-2xl"
+            width={400}
+            height={400}
+            // Subimos solo un poco: de w-60 a w-64 (móvil) y de w-70 a w-[380px] (desktop)
+            className="w-64 md:w-[380px] lg:w-[420px] h-auto object-contain mx-auto drop-shadow-2xl"
             priority
           />
 
-          <h1 className="text-white text-3xl md:text-5xl font-semibold tracking-[0.1em] uppercase leading-tight drop-shadow-lg mt-6">
-            Medra <br />
-            <span className="italic text-[var(--buttons)]">ProWorks</span>
-          </h1>
-
-          <div className="flex flex-col items-center gap-2 mt-4">
+          <div className="flex flex-col items-center gap-2 mt-4 md:mt-6">
             <div className="h-px w-12 bg-[var(--buttons)] mb-2" />
-            <div className="flex items-center justify-center gap-2 text-white tracking-[0.3em] uppercase text-xs md:text-base font-medium">
-              <MapPin className="w-4 h-4 text-[var(--buttons)]" />
+            <div className="flex items-center justify-center gap-2 text-white tracking-[0.3em] uppercase text-[10px] md:text-[13px] font-medium">
+              <MapPin className="w-3.5 h-3.5 text-[var(--buttons)]" />
               Palm Coast, Fl
             </div>
           </div>

@@ -152,9 +152,6 @@ const Footer = () => {
               <Lock size={14} />
             </Link>
           </div>
-          <p className="hover:text-white transition-colors cursor-default">
-            Crafted for Perfection
-          </p>
         </div>
       </div>
     </footer>

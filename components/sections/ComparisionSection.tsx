@@ -9,21 +9,24 @@ export default function ComparisonSection() {
     {
       before: "/portfoliof/before2.jpg",
       after: "/portfoliof/after2.jpg",
-      title: "Warm Timber Fusion",
+      title: "Elegant Marble Style Vinyl",
       steps: [
-        "Advanced vapor barrier against coastal humidity.",
-        "Hand-applied textures for organic wood warmth.",
-        "Satin-finish topcoat with anti-slip safety.",
+        // Pasos técnicos reales para instalación de LVP (imitación piedra/cerámica)
+        "Precision subfloor leveling for seamless plank transition.", // Nivelación
+        "Dustless adhesive application or click-lock installation.", // Instalación (pegado o clic)
+        "Waterproof perimeter sealing for high-moisture defense.", // Sellado (LVP es waterproof)
       ],
     },
     {
       before: "/portfoliof/before1.jpg",
       after: "/portfoliof/after1.jpg",
-      title: "Metallic Marble Finish",
+
+      title: "Classic Wood Laminate",
       steps: [
-        "Industrial diamond grinding for maximum bonding.",
-        "Artisan metallic layering for deep marble veining.",
-        "High-gloss protective seal for mirror-like durability.",
+        // Pasos técnicos reales para instalación de Piso Laminado (madera)
+        "High-density underlayment for sound and thermal insulation.", // Bajo piso (aislante)
+        "Floating floor installation with precise expansion gaps.", // Instalación flotante y juntas
+        "Staggered plank pattern for authentic timber aesthetics.", // Patrón escalonado para realismo
       ],
     },
   ];
@@ -56,10 +59,17 @@ export default function ComparisonSection() {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              // Estado inicial: un poco más abajo y totalmente invisible
+              initial={{ opacity: 0, y: 50 }}
+              // Al entrar en el viewport: sube suavemente
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              // Ajuste de viewport para detectar la entrada antes
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{
+                duration: 1.2, // Aumentamos la duración para mayor elegancia
+                delay: index * 0.2, // El segundo proyecto esperará 0.2s extra para no salir de golpe
+                ease: [0.21, 0.47, 0.32, 0.98], // Curva de velocidad "Premium"
+              }}
               className="w-full"
             >
               <div className="mb-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
@@ -77,7 +87,6 @@ export default function ComparisonSection() {
                 <div className="md:col-span-7 flex flex-col gap-5">
                   {project.steps.map((step, i) => (
                     <div key={i} className="flex items-start gap-4 group">
-                      {/* Punto sutil con efecto de brillo al hacer hover */}
                       <div className="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--buttons)] shrink-0 shadow-[0_0_8px_rgba(185,146,74,0.4)]" />
                       <p className="text-white/70 text-sm md:text-base leading-relaxed font-light tracking-wide">
                         {step}
