@@ -27,8 +27,8 @@ export default function Services() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 md:mb-24">
           <SectionHeader
-            eyebrow="Expertise"
-            title="Professional Services"
+            eyebrow="Professional "
+            title="Services"
             subtitle="Specialized installation and refinement. Quality craftsmanship where the client's vision meets our precision."
           />
         </div>

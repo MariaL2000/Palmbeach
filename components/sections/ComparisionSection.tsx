@@ -34,6 +34,7 @@ export default function ComparisonSection() {
   return (
     <section
       className="py-12 md:py-20 w-full relative"
+      id="beforeafter"
       style={{
         // Gradiente radial elegante que se funde a negro en los bordes
         background:
