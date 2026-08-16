@@ -4,4 +4,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: https://medraproworks.com/sitemap.xml
+Sitemap: https://www.medraproworks.com/sitemap.xml
