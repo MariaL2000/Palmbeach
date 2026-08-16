@@ -161,11 +161,11 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center">
             <ActionButton
-              href="tel:5612857825"
-              label="GET A QUOTE"
+              href="tel:+19043472708"
+              label="CALL NOW +1 904-347-2708"
               variant="primary"
-              icon={<Phone size={18} />}
-              className="!text-[12px] !px-10 !py-5 shadow-2xl font-black tracking-widest"
+              icon={<Phone size={20} />}
+              className="!text-[12px] !px-10 !py-5 shadow-2xl font-black tracking-widest hover:scale-105 transition-transform"
             />
           </div>
 

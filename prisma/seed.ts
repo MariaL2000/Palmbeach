@@ -1,6 +1,16 @@
 import { prisma } from "../lib/prisma";
 
 async function main() {
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminName = process.env.ADMIN_NAME;
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  if (!adminEmail || !adminName || !adminPassword) {
+    throw new Error(
+      "Faltan las variables de entorno requeridas para el administrador (ADMIN_EMAIL, ADMIN_NAME, ADMIN_PASSWORD).",
+    );
+  }
+
   console.log("--- Limpiando base de datos ---");
 
   await prisma.projectImage.deleteMany();
@@ -9,23 +19,22 @@ async function main() {
   console.log("--- Insertando Usuario Admin ---");
   await prisma.user.create({
     data: {
-      email: "medraproworks@gmail.com",
-      name: "Admin",
-      password: "arianmarreromedrano1",
+      email: adminEmail,
+      name: adminName,
+      password: adminPassword,
       role: "ADMIN",
     },
   });
 
-  console.log("--- Insertando Imágenes Locales (a1 - a10) ---");
+  console.log("--- Insertando Imágenes Locales (a1 - a16) ---");
 
-  // Generamos las 10 imágenes locales dinámicamente
   const categories = ["Epoxy", "Marble", "Concrete", "Wood", "Stone"];
 
   for (let i = 1; i <= 16; i++) {
     await prisma.projectImage.create({
       data: {
-        url: `/portfoliof/a${i}.jpg`, // Ruta local en public/portfolio/aX.jpg
-        publicId: `local-seed-${i}`, // ID ficticio para evitar nulos
+        url: `/portfoliof/a${i}.jpg`,
+        publicId: `local-seed-${i}`,
         category: categories[i % categories.length],
         title: `Elite Project ${i}`,
         active: true,

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { lora } from "@/app/fonts/fonts";
 import { ArrowRight } from "lucide-react";
 import React, { ReactNode } from "react";
+import { motion } from "framer-motion";
 
 interface ActionButtonProps {
   href: string;
@@ -39,15 +40,21 @@ const ActionButton: React.FC<ActionButtonProps> = ({
     >
       <span>{label}</span>
 
-      {/* 
-          LÓGICA DINÁMICA: 
-          Si existe 'icon', lo muestra. 
-          Si no, muestra la flecha de siempre.
-      */}
       {icon ? (
-        <div className="transition-transform duration-300 group-hover:scale-110">
+        <motion.div
+          animate={{
+            rotate: [0, -10, 10, -10, 0],
+            scale: [1, 1.1, 1, 1.1, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            repeatDelay: 1,
+            ease: "easeInOut",
+          }}
+        >
           {icon}
-        </div>
+        </motion.div>
       ) : (
         <ArrowRight
           size={18}
