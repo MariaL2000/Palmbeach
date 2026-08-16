@@ -8,8 +8,8 @@ export const COMPANY = {
   name: "Medra ProWorks",
   short: "Prestige Flooring",
   location: "Palm Coast, FL",
-  phone: "(561) 285-7825",
-  phoneHref: "tel:5612857825",
+  phone: "904-347-2708",
+  phoneHref: "tel:904-347-2708",
   email: "medraproworks@gmail.com",
 };
 
