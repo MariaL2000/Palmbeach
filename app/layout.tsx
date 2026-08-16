@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/sections/Footer";
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://medraproworks.com";
+const SITE_URL = "https://www.medraproworks.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -82,7 +83,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "tu-codigo-de-verificacion-de-google-search-console",
+    google: "GCGUFh5azyXIsF7N9Ef6bC5asnUyoVLN5oEoz2h-O5A",
   },
 };
 
@@ -97,6 +98,14 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        {/* Google AdSense Script */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9377998824088304"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
         {/* LocalBusiness Schema JSON-LD para SEO Local perfecto */}
         <script
           type="application/ld+json"
@@ -112,7 +121,7 @@ export default function RootLayout({
               email: "medraproworks@gmail.com",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Palm Way",
+                streetAddress: "48 Club House Dr, Apt 108",
                 addressLocality: "Palm Coast",
                 addressRegion: "FL",
                 postalCode: "32137",
