@@ -19,14 +19,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Mantenemos serverActions pero con la sintaxis estándar de Next.js 14/15
   experimental: {
     serverActions: {
-      bodySizeLimit: "4mb", // Subí a 4mb para fotos de alta calidad
+      bodySizeLimit: "4mb",
     },
   },
-  // Esta línea ayuda a Vercel a manejar correctamente las rutas con Middleware
-  skipTrailingSlashRedirect: true,
+  // Definimos explícitamente false para que las URLs nunca lleven barra al final (/gallery en vez de /gallery/)
+  trailingSlash: false,
 };
 
 export default nextConfig;
