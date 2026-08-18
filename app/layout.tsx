@@ -15,60 +15,84 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = "https://www.medraproworks.com";
+const LOGO_URL = `${SITE_URL}/logogog.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Medra ProWorks | Luxury Flooring & High-End Architectural Surfaces in Florida",
+      "Medra ProWorks | Best Flooring Installer in Palm Coast & Jacksonville",
     template: "%s | Medra ProWorks",
   },
   description:
-    "Transforming Florida's most exclusive architectural spaces with elite epoxy flooring, luxury tile installation, marble, concrete, and high-end floor coatings. Licensed & Insured FL CGC #1530912.",
+    "Transforming Florida's architectural spaces with elite flooring, luxury tile installation, marble, concrete, and high-end floor coatings. Best flooring installer in Palm Coast, Jacksonville, and surrounding areas. Licensed & Insured FL CGC #1530912. | Instalación de suelos de lujo en Florida.",
   keywords: [
-    "luxury flooring Florida",
-    "epoxy flooring Palm Coast",
-    "high-end floor coatings",
-    "architectural surfaces Florida",
-    "marble tile installation",
-    "custom concrete flooring",
+    // --- Inglés: Locales y Específicas ---
+    "best flooring installer Palm Coast",
+    "luxury flooring Palm Coast",
+    "flooring services Jacksonville",
+    "flooring installer in Palm Coast",
+    "best flooring contractor Florida",
+    "top architectural surfaces Jacksonville",
+    "marble tile installation Palm Coast",
+    "custom concrete flooring Florida",
+    "high-end floor coatings Jacksonville",
+    "luxury tile installation Palm Coast",
+    "residential flooring contractor Florida",
+    "commercial flooring services Jacksonville",
     "Medra ProWorks",
-    "commercial and residential flooring Florida",
+    "licensed flooring contractor FL",
+    // --- Español: Locales y Específicas ---
+    "instalacion de suelos en palm coast",
+    "mejor instalador de suelos jacksonville",
+    "pisos de lujo en florida",
+    "instalacion de ceramica y marmol palm coast",
+    "contratista de pisos en jacksonville",
+    "pisos de concreto pulido florida",
+    "revestimientos de suelos de alta gama",
+    "instalador profesional de pisos palm coast",
+    "empresa de instalacion de pisos en florida",
   ],
   authors: [{ name: "Medra ProWorks" }],
   creator: "Medra ProWorks",
   publisher: "Medra ProWorks",
   formatDetection: {
     email: false,
-    address: true,
+    address: false,
     telephone: true,
   },
   alternates: {
     canonical: SITE_URL,
   },
+  icons: {
+    icon: "/logogog.png",
+    shortcut: "/logogog.png",
+    apple: "/logogog.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
-    title: "Medra ProWorks | Luxury Flooring & Architectural Surfaces",
+    title:
+      "Medra ProWorks | Best Flooring Installer in Palm Coast & Jacksonville",
     description:
-      "Elite floor transformations, premium epoxy, marble, and custom architectural finishes across Palm Coast and surrounding Florida areas.",
+      "Elite floor transformations, premium marble, and custom architectural finishes across Palm Coast, Jacksonville, and surrounding Florida areas.",
     siteName: "Medra ProWorks",
     images: [
       {
-        url: `${SITE_URL}/logo.png`,
+        url: LOGO_URL,
         width: 1200,
         height: 630,
-        alt: "Medra ProWorks - Luxury Flooring",
+        alt: "Medra ProWorks - Luxury Flooring & Tile Installation",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Medra ProWorks | Luxury Flooring in Florida",
+    title: "Medra ProWorks | Best Flooring Installer in Florida",
     description:
-      "High-end floor coatings, custom epoxy, and tile installation for luxury architectural spaces.",
-    images: [`${SITE_URL}/logo.png`],
+      "High-end floor coatings and tile installation in Palm Coast and Jacksonville.",
+    images: [LOGO_URL],
   },
   robots: {
     index: true,
@@ -97,14 +121,15 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google AdSense Script Estático para verificación inmediata */}
+        <link rel="icon" href="/logogog.png" />
+
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9377998824088304"
           crossOrigin="anonymous"
         ></script>
 
-        {/* LocalBusiness Schema JSON-LD para SEO Local perfecto */}
+        {/* Schema enriquecido bilingüe y optimizado */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -112,24 +137,19 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "HomeAndConstructionBusiness",
               name: "Medra ProWorks",
-              image: `${SITE_URL}/logo.png`,
+              image: LOGO_URL,
               "@id": SITE_URL,
               url: SITE_URL,
               telephone: "+19043472708",
               email: "medraproworks@gmail.com",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "48 Club House Dr, Apt 108",
-                addressLocality: "Palm Coast",
-                addressRegion: "FL",
-                postalCode: "32137",
-                addressCountry: "US",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: 29.5847,
-                longitude: -81.2079,
-              },
+              priceRange: "$$$",
+              areaServed: [
+                { "@type": "City", name: "Palm Coast" },
+                { "@type": "City", name: "Jacksonville" },
+                { "@type": "AdministrativeArea", name: "Flagler County" },
+                { "@type": "AdministrativeArea", name: "Duval County" },
+                { "@type": "State", name: "Florida" },
+              ],
               openingHoursSpecification: {
                 "@type": "OpeningHoursSpecification",
                 dayOfWeek: [
@@ -143,8 +163,6 @@ export default function RootLayout({
                 opens: "08:00",
                 closes: "18:00",
               },
-              areaServed: ["Palm Coast, FL", "Surrounding Florida Areas"],
-              priceRange: "$$$",
             }),
           }}
         />

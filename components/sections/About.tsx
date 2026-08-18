@@ -13,6 +13,7 @@ const slideFromRight: Variants = {
     x: 0,
     transition: {
       type: "spring",
+
       stiffness: 50,
       damping: 20,
       delay: i * 0.15,
@@ -67,7 +68,7 @@ export default function AboutUs() {
 
             <div className="mt-12 flex flex-wrap gap-6">
               <ActionButton
-                href="tel:5612857825"
+                href="tel:904-347-2708"
                 label="Get a Quote"
                 variant="primary"
               />
