@@ -3,27 +3,54 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import GalleryCard from "@/components/ui/Gallerycard";
 import Hero from "@/components/ui/Hero";
 import { Pagination } from "@/components/pagination/Pagination";
+import type { Metadata } from "next";
 
 interface GalleryPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
+// 1. Generar metadatos dinámicos para SEO según la página actual
+export async function generateMetadata({
+  searchParams,
+}: GalleryPageProps): Promise<Metadata> {
+  const resolvedParams = await searchParams;
+  const page = resolvedParams?.page ?? "1";
+
+  const title =
+    page === "1"
+      ? "Gallery & Portfolio | Luxury Flooring Projects"
+      : `Gallery & Portfolio - Page ${page} | Medra ProWorks`;
+
+  const description =
+    "Explore our elite architectural floor transformations, luxury tile installations, and epoxy coatings across Palm Coast and Jacksonville, Florida.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://www.medraproworks.com/gallery${page === "1" ? "" : `?page=${page}`}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://www.medraproworks.com/gallery${page === "1" ? "" : `?page=${page}`}`,
+    },
+  };
+}
+
 export default async function FullGalleryPage({
   searchParams,
 }: GalleryPageProps) {
-  // En Next.js 15, searchParams es una promesa
   const resolvedParams = await searchParams;
   const pageString = resolvedParams?.page ?? "1";
   const currentPage = isNaN(Number(pageString)) ? 1 : Number(pageString);
   const ITEMS_PER_PAGE = 16;
 
-  // Obtenemos los proyectos y el total de páginas desde la base de datos
   const { images, totalPages } = await getPaginatedProjects(
     currentPage,
     ITEMS_PER_PAGE,
   );
 
-  // Seleccionamos la imagen de fondo para el Hero
   const heroImageUrl =
     images.length > 0
       ? images[0].url
@@ -62,7 +89,6 @@ export default async function FullGalleryPage({
               ))}
             </div>
 
-            {/* Componente de Paginación importado */}
             <div className="mt-12">
               <Pagination totalPages={totalPages} />
             </div>
