@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/sections/Footer";
@@ -25,9 +26,8 @@ export const metadata: Metadata = {
     template: "%s | Medra ProWorks",
   },
   description:
-    "Transforming Florida's architectural spaces with elite flooring, luxury tile installation, marble, concrete, and high-end floor coatings. Best flooring installer in Palm Coast, Jacksonville, and surrounding areas. Licensed & Insured FL CGC #1530912. | Instalación de suelos de lujo en Florida.",
+    "Transforming Florida's architectural spaces with elite flooring, luxury tile installation, marble, concrete, and high-end floor coatings. Best flooring installer in Palm Coast, Jacksonville, and surrounding areas. Licensed & Insured FL CGC #1530912. | Instalación de suelos de lujo, cerámica y mármol en Florida.",
   keywords: [
-    // --- Inglés: Locales y Específicas ---
     "best flooring installer Palm Coast",
     "luxury flooring Palm Coast",
     "flooring services Jacksonville",
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
     "residential flooring contractor Florida",
     "commercial flooring services Jacksonville",
     "Medra ProWorks",
+    "medraproworks",
     "licensed flooring contractor FL",
-    // --- Español: Locales y Específicas ---
     "instalacion de suelos en palm coast",
     "mejor instalador de suelos jacksonville",
     "pisos de lujo en florida",
@@ -52,6 +52,14 @@ export const metadata: Metadata = {
     "revestimientos de suelos de alta gama",
     "instalador profesional de pisos palm coast",
     "empresa de instalacion de pisos en florida",
+    "flooring contractor near me Palm Coast",
+    "best tile setter Jacksonville FL",
+    "hardwood and tile flooring Florida",
+    "luxury home flooring Palm Coast",
+    "expert floor installation Florida",
+    "contratista de ceramica y pisos Florida",
+    "instalacion de pisos laminados y vinilicos Palm Coast",
+    "pulido de pisos y marmol Jacksonville",
   ],
   authors: [{ name: "Medra ProWorks" }],
   creator: "Medra ProWorks",
@@ -120,14 +128,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="icon" href="/logogog.png" />
-
-        <script
+      <body className="min-h-full flex flex-col bg-white">
+        {/* Google AdSense optimizado con Next/Script */}
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9377998824088304"
           crossOrigin="anonymous"
-        ></script>
+          strategy="afterInteractive"
+        />
 
         {/* Schema enriquecido bilingüe y optimizado */}
         <script
@@ -166,8 +174,7 @@ export default function RootLayout({
             }),
           }}
         />
-      </head>
-      <body className="min-h-full flex flex-col bg-white">
+
         <Navbar />
         <div className="flex-grow">{children}</div>
         <Footer />
