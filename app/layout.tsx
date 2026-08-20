@@ -73,9 +73,9 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   icons: {
-    icon: "/logogog.png",
-    shortcut: "/logogog.png",
-    apple: "/logogog.png",
+    icon: "/medrapro.png",
+    shortcut: "/medrapro.png",
+    apple: "/medrapro.png",
   },
   openGraph: {
     type: "website",
