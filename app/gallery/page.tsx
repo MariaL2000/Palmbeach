@@ -9,6 +9,9 @@ interface GalleryPageProps {
   searchParams: Promise<{ page?: string }>;
 }
 
+const SITE_URL = "https://www.medraproworks.com";
+const LOGO_URL = `${SITE_URL}/medrapro.png`;
+
 // 1. Generar metadatos dinámicos para SEO según la página actual
 export async function generateMetadata({
   searchParams,
@@ -28,12 +31,21 @@ export async function generateMetadata({
     title,
     description,
     alternates: {
-      canonical: `https://www.medraproworks.com/gallery${page === "1" ? "" : `?page=${page}`}`,
+      canonical: `${SITE_URL}/gallery${page === "1" ? "" : `?page=${page}`}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://www.medraproworks.com/gallery${page === "1" ? "" : `?page=${page}`}`,
+      url: `${SITE_URL}/gallery${page === "1" ? "" : `?page=${page}`}`,
+      type: "website",
+      images: [
+        {
+          url: LOGO_URL,
+          width: 192,
+          height: 192,
+          alt: "Medra ProWorks Logo",
+        },
+      ],
     },
   };
 }
@@ -56,8 +68,33 @@ export default async function FullGalleryPage({
       ? images[0].url
       : "https://images.unsplash.com/photo-1517646288021-229e39b4334c?q=80&w=2070&auto=format&fit=crop";
 
+  const currentGalleryUrl = `${SITE_URL}/gallery${currentPage === 1 ? "" : `?page=${currentPage}`}`;
+
   return (
     <main className="pb-20 bg-white min-h-screen">
+      {/* Schema específico para la galería de proyectos */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Gallery & Portfolio | Medra ProWorks",
+            url: currentGalleryUrl,
+            description:
+              "Explore our elite architectural floor transformations and luxury tile installations.",
+            publisher: {
+              "@type": "HomeAndConstructionBusiness",
+              name: "Medra ProWorks",
+              logo: {
+                "@type": "ImageObject",
+                url: LOGO_URL,
+              },
+            },
+          }),
+        }}
+      />
+
       <Hero
         img={heroImageUrl}
         title="Gallery & Portfolio"

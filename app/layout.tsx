@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL = "https://www.medraproworks.com";
-const LOGO_URL = `${SITE_URL}/logogog.png`;
+const LOGO_URL = `${SITE_URL}/medrapro.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -89,8 +89,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: LOGO_URL,
-        width: 1200,
-        height: 630,
+        width: 192,
+        height: 192,
         alt: "Medra ProWorks - Luxury Flooring & Tile Installation",
       },
     ],
@@ -145,6 +145,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "HomeAndConstructionBusiness",
               name: "Medra ProWorks",
+              logo: LOGO_URL,
               image: LOGO_URL,
               "@id": SITE_URL,
               url: SITE_URL,
