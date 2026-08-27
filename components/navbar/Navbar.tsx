@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Phone, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -10,9 +11,9 @@ import logo from "@/public/logo.png";
 import logo2 from "@/public/logo2.png";
 
 const links = [
-  { href: "/#about", label: "About us" },
-  { href: "/#services", label: "Services" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/about", label: "About us" },
+  { href: "/services", label: "Services" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const gallerySublinks = [
@@ -84,7 +85,7 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <ul className="hidden lg:flex items-center gap-10">
-            {links.slice(0, 2).map((link) => (
+            {links.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
@@ -146,17 +147,6 @@ export default function Navbar() {
                 ))}
               </div>
             </li>
-
-            <li>
-              <Link
-                href="/#contact"
-                className="relative text-[13px] uppercase tracking-[0.15em] font-bold transition-colors group/link"
-                style={{ color: isScrolled ? "var(--primary)" : "white" }}
-              >
-                Contact
-                <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-[var(--buttons)] scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left" />
-              </Link>
-            </li>
           </ul>
 
           <div className="hidden lg:flex items-center">
@@ -202,7 +192,7 @@ export default function Navbar() {
 
             <div className="flex-1 overflow-y-auto px-8 py-10">
               <ul className="flex flex-col gap-2">
-                {links.slice(0, 2).map((link) => (
+                {links.map((link) => (
                   <li key={link.label} className="border-b border-white/5">
                     <Link
                       href={link.href}
@@ -281,21 +271,11 @@ export default function Navbar() {
                     )}
                   </AnimatePresence>
                 </li>
-
-                <li className="border-b border-white/5">
-                  <Link
-                    href="/#contact"
-                    onClick={() => setMobileOpen(false)}
-                    className="block py-5 text-2xl font-bold text-white uppercase tracking-tighter"
-                  >
-                    Contact
-                  </Link>
-                </li>
               </ul>
             </div>
 
             <ActionButton
-              href="tel:5612857825"
+              href="tel:9043472708"
               label="CALL NOW"
               variant="primary"
               icon={<Phone size={22} />}

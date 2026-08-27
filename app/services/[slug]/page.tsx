@@ -5,6 +5,30 @@ import ActionButton from "@/components/ui/ActionButton";
 import Hero from "@/components/ui/Hero";
 import { lora, libreBaskerville } from "@/app/fonts/fonts";
 import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+import { Metadata } from "next";
+
+export async function generateStaticParams() {
+  return Object.keys(SERVICES_DETAILS).map((slug) => ({
+    slug,
+  }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const service = SERVICES_DETAILS[slug as keyof typeof SERVICES_DETAILS];
+
+  if (!service) return { title: "Service Not Found - Medra ProWorks" };
+
+  return {
+    title: `${service.title} | Medra ProWorks`,
+    description: service.subtitle || service.description,
+  };
+}
 
 export default async function ServicePage({
   params,
@@ -23,7 +47,7 @@ export default async function ServicePage({
         img={service.img}
         title={service.title}
         subtitle={service.subtitle}
-        backLink="/#services"
+        backLink="/services"
         backText="Back to Services"
       />
 
@@ -58,7 +82,7 @@ export default async function ServicePage({
 
               <div className="mt-12 flex flex-col sm:flex-row gap-4">
                 <ActionButton
-                  href="/#contact"
+                  href="/contact"
                   label="Request a Free Estimate"
                   variant="primary"
                 />
@@ -73,12 +97,18 @@ export default async function ServicePage({
             <div className="lg:col-span-5 sticky top-32">
               <div className="relative group">
                 <div className="absolute -inset-4 border border-[var(--buttons)]/30 rounded-sm translate-x-2 translate-y-2 -z-10 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
-                <img
-                  src={service.img}
-                  alt="Service detailing"
-                  className="w-full h-auto shadow-2xl rounded-sm grayscale-[20%] hover:grayscale-0 transition-all duration-700"
-                />
-                <div className="absolute bottom-6 left-6 bg-white p-6 shadow-xl max-w-[200px]">
+
+                <div className="relative w-full h-[450px] shadow-2xl rounded-sm overflow-hidden grayscale-[20%] hover:grayscale-0 transition-all duration-700">
+                  <Image
+                    src={service.img}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+
+                <div className="absolute bottom-6 left-6 bg-white p-6 shadow-xl max-w-[200px] z-10">
                   <p className="text-[var(--primary)] font-black text-3xl">
                     100%
                   </p>
@@ -110,7 +140,7 @@ export default async function ServicePage({
             for a professional assessment.
           </p>
           <ActionButton
-            href="/#contact"
+            href="/contact"
             label="Get Started Now"
             variant="secondary"
             className="!border-white !text-white hover:!bg-white hover:!text-[var(--primary)] !px-12"
