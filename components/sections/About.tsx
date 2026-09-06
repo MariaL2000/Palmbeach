@@ -70,44 +70,6 @@ export default function AboutUs() {
                 polyaspartics to luxury metallic epoxies and natural stone
                 restoration, we treat your floors as an architectural canvas.
               </p>
-
-              {/* Lista adicional de características clave */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-start gap-3">
-                  <ShieldCheck
-                    className="text-[var(--buttons)] shrink-0 mt-1"
-                    size={22}
-                  />
-                  <div>
-                    <strong className="block text-sm text-[var(--primary)] font-bold">
-                      Fully Certified
-                    </strong>
-                    <span className="text-xs text-gray-600">
-                      Licensed and insured professionals across Florida.
-                    </span>
-                  </div>
-                </div>
-                <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-start gap-3">
-                  <Award
-                    className="text-[var(--buttons)] shrink-0 mt-1"
-                    size={22}
-                  />
-                  <div>
-                    <strong className="block text-sm text-[var(--primary)] font-bold">
-                      Enduring Quality
-                    </strong>
-                    <span className="text-xs text-gray-600">
-                      Top-tier raw materials built to outlast expectations.
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-sm text-gray-600 pt-2">
-                We manage your investment transparently from the initial on-site
-                consultation to the final hand-polished protection layer,
-                guaranteeing absolute satisfaction.
-              </p>
             </motion.div>
 
             <div className="mt-10 flex flex-wrap gap-6">
